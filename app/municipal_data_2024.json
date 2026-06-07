@@ -1,0 +1,1290 @@
+[
+  {
+    "year": 2024,
+    "municipality": "100 Mile House",
+    "Population": 2083,
+    "Total Taxes Collected": 2812955,
+    "Typical House Value": 365808,
+    "Total Property Taxes and Charges on Typical House": 3509
+  },
+  {
+    "year": 2024,
+    "municipality": "Abbotsford",
+    "Population": 175589,
+    "Total Taxes Collected": 191009354,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Alert Bay",
+    "Population": 463,
+    "Total Taxes Collected": 456009,
+    "Typical House Value": 291655,
+    "Total Property Taxes and Charges on Typical House": 3068
+  },
+  {
+    "year": 2024,
+    "municipality": "Anmore",
+    "Population": 2533,
+    "Total Taxes Collected": 2964049,
+    "Typical House Value": 2535365,
+    "Total Property Taxes and Charges on Typical House": 11292
+  },
+  {
+    "year": 2024,
+    "municipality": "Armstrong",
+    "Population": 5899,
+    "Total Taxes Collected": 4181285,
+    "Typical House Value": 674865,
+    "Total Property Taxes and Charges on Typical House": 4028
+  },
+  {
+    "year": 2024,
+    "municipality": "Ashcroft",
+    "Population": 1747,
+    "Total Taxes Collected": 2065245,
+    "Typical House Value": 368292,
+    "Total Property Taxes and Charges on Typical House": 3783
+  },
+  {
+    "year": 2024,
+    "municipality": "Barriere",
+    "Population": 1982,
+    "Total Taxes Collected": 1096103,
+    "Typical House Value": 384326,
+    "Total Property Taxes and Charges on Typical House": 3251
+  },
+  {
+    "year": 2024,
+    "municipality": "Belcarra",
+    "Population": 729,
+    "Total Taxes Collected": 1112676,
+    "Typical House Value": 1941000,
+    "Total Property Taxes and Charges on Typical House": 9789
+  },
+  {
+    "year": 2024,
+    "municipality": "Bowen Island",
+    "Population": 4181,
+    "Total Taxes Collected": 8314236,
+    "Typical House Value": 1605650,
+    "Total Property Taxes and Charges on Typical House": 10323
+  },
+  {
+    "year": 2024,
+    "municipality": "Burnaby",
+    "Population": 279948,
+    "Total Taxes Collected": 353067565,
+    "Typical House Value": 2079173,
+    "Total Property Taxes and Charges on Typical House": 7327
+  },
+  {
+    "year": 2024,
+    "municipality": "Burns Lake",
+    "Population": 1932,
+    "Total Taxes Collected": 1667791,
+    "Typical House Value": 234629,
+    "Total Property Taxes and Charges on Typical House": 3840
+  },
+  {
+    "year": 2024,
+    "municipality": "Cache Creek",
+    "Population": 1111,
+    "Total Taxes Collected": 996971,
+    "Typical House Value": 291523,
+    "Total Property Taxes and Charges on Typical House": 3851
+  },
+  {
+    "year": 2024,
+    "municipality": "Campbell River",
+    "Population": 38658,
+    "Total Taxes Collected": 45087698,
+    "Typical House Value": 714553,
+    "Total Property Taxes and Charges on Typical House": 5556
+  },
+  {
+    "year": 2024,
+    "municipality": "Canal Flats",
+    "Population": 774,
+    "Total Taxes Collected": 883032,
+    "Typical House Value": 401483,
+    "Total Property Taxes and Charges on Typical House": 2942
+  },
+  {
+    "year": 2024,
+    "municipality": "Castlegar",
+    "Population": 9042,
+    "Total Taxes Collected": 11413746,
+    "Typical House Value": 498897,
+    "Total Property Taxes and Charges on Typical House": 4317
+  },
+  {
+    "year": 2024,
+    "municipality": "Central Saanich",
+    "Population": 19326,
+    "Total Taxes Collected": 22333252,
+    "Typical House Value": 1192021,
+    "Total Property Taxes and Charges on Typical House": 6127
+  },
+  {
+    "year": 2024,
+    "municipality": "Chase",
+    "Population": 2639,
+    "Total Taxes Collected": 2544972,
+    "Typical House Value": 478140,
+    "Total Property Taxes and Charges on Typical House": 3940
+  },
+  {
+    "year": 2024,
+    "municipality": "Chetwynd",
+    "Population": 2692,
+    "Total Taxes Collected": 3483007,
+    "Typical House Value": 248755,
+    "Total Property Taxes and Charges on Typical House": 2975
+  },
+  {
+    "year": 2024,
+    "municipality": "Chilliwack",
+    "Population": 100884,
+    "Total Taxes Collected": 101874642,
+    "Typical House Value": 895653,
+    "Total Property Taxes and Charges on Typical House": 4831
+  },
+  {
+    "year": 2024,
+    "municipality": "Clearwater",
+    "Population": 2751,
+    "Total Taxes Collected": 3437173,
+    "Typical House Value": 406367,
+    "Total Property Taxes and Charges on Typical House": 3755
+  },
+  {
+    "year": 2024,
+    "municipality": "Clinton",
+    "Population": 621,
+    "Total Taxes Collected": 895354,
+    "Typical House Value": 218020,
+    "Total Property Taxes and Charges on Typical House": 3165
+  },
+  {
+    "year": 2024,
+    "municipality": "Coldstream",
+    "Population": 12306,
+    "Total Taxes Collected": 9875109,
+    "Typical House Value": 1000895,
+    "Total Property Taxes and Charges on Typical House": 6312
+  },
+  {
+    "year": 2024,
+    "municipality": "Colwood",
+    "Population": 21874,
+    "Total Taxes Collected": 22416481,
+    "Typical House Value": 1052035,
+    "Total Property Taxes and Charges on Typical House": 4851
+  },
+  {
+    "year": 2024,
+    "municipality": "Comox",
+    "Population": 15902,
+    "Total Taxes Collected": 13183214,
+    "Typical House Value": 844877,
+    "Total Property Taxes and Charges on Typical House": 5296
+  },
+  {
+    "year": 2024,
+    "municipality": "Coquitlam",
+    "Population": 168250,
+    "Total Taxes Collected": 206036297,
+    "Typical House Value": 1771416,
+    "Total Property Taxes and Charges on Typical House": 7481
+  },
+  {
+    "year": 2024,
+    "municipality": "Courtenay",
+    "Population": 31242,
+    "Total Taxes Collected": 36342443,
+    "Typical House Value": 758439,
+    "Total Property Taxes and Charges on Typical House": 5357
+  },
+  {
+    "year": 2024,
+    "municipality": "Cranbrook",
+    "Population": 22675,
+    "Total Taxes Collected": 36213551,
+    "Typical House Value": 481429,
+    "Total Property Taxes and Charges on Typical House": 4971
+  },
+  {
+    "year": 2024,
+    "municipality": "Creston",
+    "Population": 5892,
+    "Total Taxes Collected": 5754921,
+    "Typical House Value": 425970,
+    "Total Property Taxes and Charges on Typical House": 4660
+  },
+  {
+    "year": 2024,
+    "municipality": "Cumberland",
+    "Population": 4901,
+    "Total Taxes Collected": 4766403,
+    "Typical House Value": 781271,
+    "Total Property Taxes and Charges on Typical House": 5482
+  },
+  {
+    "year": 2024,
+    "municipality": "Daajing Giids",
+    "Population": 1033,
+    "Total Taxes Collected": 565294,
+    "Typical House Value": 402816,
+    "Total Property Taxes and Charges on Typical House": 4091
+  },
+  {
+    "year": 2024,
+    "municipality": "Dawson Creek",
+    "Population": 13615,
+    "Total Taxes Collected": 23578354,
+    "Typical House Value": 277412,
+    "Total Property Taxes and Charges on Typical House": 4770
+  },
+  {
+    "year": 2024,
+    "municipality": "Delta",
+    "Population": 116610,
+    "Total Taxes Collected": 187790965,
+    "Typical House Value": 1473991,
+    "Total Property Taxes and Charges on Typical House": 6582
+  },
+  {
+    "year": 2024,
+    "municipality": "Duncan",
+    "Population": 5513,
+    "Total Taxes Collected": 6442319,
+    "Typical House Value": 573051,
+    "Total Property Taxes and Charges on Typical House": 4498
+  },
+  {
+    "year": 2024,
+    "municipality": "Elkford",
+    "Population": 2805,
+    "Total Taxes Collected": 5311827,
+    "Typical House Value": 340183,
+    "Total Property Taxes and Charges on Typical House": 3839
+  },
+  {
+    "year": 2024,
+    "municipality": "Enderby",
+    "Population": 3323,
+    "Total Taxes Collected": 2258688,
+    "Typical House Value": 534687,
+    "Total Property Taxes and Charges on Typical House": 4043
+  },
+  {
+    "year": 2024,
+    "municipality": "Esquimalt",
+    "Population": 19738,
+    "Total Taxes Collected": 23457551,
+    "Typical House Value": 1046480,
+    "Total Property Taxes and Charges on Typical House": 5439
+  },
+  {
+    "year": 2024,
+    "municipality": "Fernie",
+    "Population": 6000,
+    "Total Taxes Collected": 14074490,
+    "Typical House Value": 907932,
+    "Total Property Taxes and Charges on Typical House": 6264
+  },
+  {
+    "year": 2024,
+    "municipality": "Fort St. James",
+    "Population": 1696,
+    "Total Taxes Collected": 3705644,
+    "Typical House Value": 228228,
+    "Total Property Taxes and Charges on Typical House": 3334
+  },
+  {
+    "year": 2024,
+    "municipality": "Fort St. John",
+    "Population": 23005,
+    "Total Taxes Collected": 35889041,
+    "Typical House Value": 350568,
+    "Total Property Taxes and Charges on Typical House": 3292
+  },
+  {
+    "year": 2024,
+    "municipality": "Fraser Lake",
+    "Population": 1033,
+    "Total Taxes Collected": 2367564,
+    "Typical House Value": 192321,
+    "Total Property Taxes and Charges on Typical House": 3570
+  },
+  {
+    "year": 2024,
+    "municipality": "Fruitvale",
+    "Population": 2112,
+    "Total Taxes Collected": 1217594,
+    "Typical House Value": 444167,
+    "Total Property Taxes and Charges on Typical House": 4956
+  },
+  {
+    "year": 2024,
+    "municipality": "Gibsons",
+    "Population": 5098,
+    "Total Taxes Collected": 4433250,
+    "Typical House Value": 1032492,
+    "Total Property Taxes and Charges on Typical House": 6403
+  },
+  {
+    "year": 2024,
+    "municipality": "Gold River",
+    "Population": 1296,
+    "Total Taxes Collected": 1315221,
+    "Typical House Value": 300174,
+    "Total Property Taxes and Charges on Typical House": 3439
+  },
+  {
+    "year": 2024,
+    "municipality": "Golden",
+    "Population": 4455,
+    "Total Taxes Collected": 7618938,
+    "Typical House Value": 557582,
+    "Total Property Taxes and Charges on Typical House": 4942
+  },
+  {
+    "year": 2024,
+    "municipality": "Grand Forks",
+    "Population": 4447,
+    "Total Taxes Collected": 4438700,
+    "Typical House Value": 413647,
+    "Total Property Taxes and Charges on Typical House": 6122
+  },
+  {
+    "year": 2024,
+    "municipality": "Granisle",
+    "Population": 320,
+    "Total Taxes Collected": 533522,
+    "Typical House Value": 95105,
+    "Total Property Taxes and Charges on Typical House": 2022
+  },
+  {
+    "year": 2024,
+    "municipality": "Greenwood",
+    "Population": 730,
+    "Total Taxes Collected": 647397,
+    "Typical House Value": 263314,
+    "Total Property Taxes and Charges on Typical House": 2813
+  },
+  {
+    "year": 2024,
+    "municipality": "Harrison Hot Springs",
+    "Population": 1731,
+    "Total Taxes Collected": 2899097,
+    "Typical House Value": 854711,
+    "Total Property Taxes and Charges on Typical House": 4575
+  },
+  {
+    "year": 2024,
+    "municipality": "Hazelton",
+    "Population": 347,
+    "Total Taxes Collected": 252473,
+    "Typical House Value": 283000,
+    "Total Property Taxes and Charges on Typical House": 4099
+  },
+  {
+    "year": 2024,
+    "municipality": "Highlands",
+    "Population": 2698,
+    "Total Taxes Collected": 2666089,
+    "Typical House Value": 1333900,
+    "Total Property Taxes and Charges on Typical House": 4964
+  },
+  {
+    "year": 2024,
+    "municipality": "Hope",
+    "Population": 6855,
+    "Total Taxes Collected": 10874423,
+    "Typical House Value": 626869,
+    "Total Property Taxes and Charges on Typical House": 4363
+  },
+  {
+    "year": 2024,
+    "municipality": "Houston",
+    "Population": 3268,
+    "Total Taxes Collected": 5262488,
+    "Typical House Value": 255701,
+    "Total Property Taxes and Charges on Typical House": 3594
+  },
+  {
+    "year": 2024,
+    "municipality": "Hudson's Hope",
+    "Population": 1071,
+    "Total Taxes Collected": 4303751,
+    "Typical House Value": 201222,
+    "Total Property Taxes and Charges on Typical House": 2050
+  },
+  {
+    "year": 2024,
+    "municipality": "Invermere",
+    "Population": 3910,
+    "Total Taxes Collected": 5341756,
+    "Typical House Value": 741094,
+    "Total Property Taxes and Charges on Typical House": 5878
+  },
+  {
+    "year": 2024,
+    "municipality": "Kamloops",
+    "Population": 107254,
+    "Total Taxes Collected": 150810881,
+    "Typical House Value": 694167,
+    "Total Property Taxes and Charges on Typical House": 5463
+  },
+  {
+    "year": 2024,
+    "municipality": "Kaslo",
+    "Population": 1069,
+    "Total Taxes Collected": 801631,
+    "Typical House Value": 514412,
+    "Total Property Taxes and Charges on Typical House": 4087
+  },
+  {
+    "year": 2024,
+    "municipality": "Kelowna",
+    "Population": 160693,
+    "Total Taxes Collected": 201749355,
+    "Typical House Value": 1067078,
+    "Total Property Taxes and Charges on Typical House": 5654
+  },
+  {
+    "year": 2024,
+    "municipality": "Kent",
+    "Population": 7201,
+    "Total Taxes Collected": 8987142,
+    "Typical House Value": 776850,
+    "Total Property Taxes and Charges on Typical House": 4127
+  },
+  {
+    "year": 2024,
+    "municipality": "Keremeos",
+    "Population": 1836,
+    "Total Taxes Collected": 1126962,
+    "Typical House Value": 473995,
+    "Total Property Taxes and Charges on Typical House": 3318
+  },
+  {
+    "year": 2024,
+    "municipality": "Kimberley",
+    "Population": 8674,
+    "Total Taxes Collected": 13230585,
+    "Typical House Value": 540885,
+    "Total Property Taxes and Charges on Typical House": 5453
+  },
+  {
+    "year": 2024,
+    "municipality": "Kitimat",
+    "Population": 8905,
+    "Total Taxes Collected": null,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Ladysmith",
+    "Population": 9690,
+    "Total Taxes Collected": 10926687,
+    "Typical House Value": 718384,
+    "Total Property Taxes and Charges on Typical House": 5773
+  },
+  {
+    "year": 2024,
+    "municipality": "Lake Country",
+    "Population": 18705,
+    "Total Taxes Collected": 23484190,
+    "Typical House Value": 1085151,
+    "Total Property Taxes and Charges on Typical House": 6101
+  },
+  {
+    "year": 2024,
+    "municipality": "Lake Cowichan",
+    "Population": 3748,
+    "Total Taxes Collected": 2946701,
+    "Typical House Value": 654952,
+    "Total Property Taxes and Charges on Typical House": 5355
+  },
+  {
+    "year": 2024,
+    "municipality": "Langford",
+    "Population": 52953,
+    "Total Taxes Collected": 54553378,
+    "Typical House Value": 998019,
+    "Total Property Taxes and Charges on Typical House": 4472
+  },
+  {
+    "year": 2024,
+    "municipality": "Langley (City)",
+    "Population": 31936,
+    "Total Taxes Collected": 42172601,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Langley (District)",
+    "Population": 148653,
+    "Total Taxes Collected": 191639566,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Lantzville",
+    "Population": 4099,
+    "Total Taxes Collected": 3522097,
+    "Typical House Value": 1142118,
+    "Total Property Taxes and Charges on Typical House": 7901
+  },
+  {
+    "year": 2024,
+    "municipality": "Lillooet",
+    "Population": 2196,
+    "Total Taxes Collected": 2645925,
+    "Typical House Value": 407607,
+    "Total Property Taxes and Charges on Typical House": 4295
+  },
+  {
+    "year": 2024,
+    "municipality": "Lions Bay",
+    "Population": 1353,
+    "Total Taxes Collected": 2195230,
+    "Typical House Value": 2253370,
+    "Total Property Taxes and Charges on Typical House": 10021
+  },
+  {
+    "year": 2024,
+    "municipality": "Logan Lake",
+    "Population": 2371,
+    "Total Taxes Collected": 4157440,
+    "Typical House Value": 445354,
+    "Total Property Taxes and Charges on Typical House": 2820
+  },
+  {
+    "year": 2024,
+    "municipality": "Lumby",
+    "Population": 2147,
+    "Total Taxes Collected": 1316869,
+    "Typical House Value": 547750,
+    "Total Property Taxes and Charges on Typical House": 4196
+  },
+  {
+    "year": 2024,
+    "municipality": "Lytton",
+    "Population": 281,
+    "Total Taxes Collected": 359684,
+    "Typical House Value": 194782,
+    "Total Property Taxes and Charges on Typical House": 2156
+  },
+  {
+    "year": 2024,
+    "municipality": "Mackenzie",
+    "Population": 3729,
+    "Total Taxes Collected": 6116244,
+    "Typical House Value": 172128,
+    "Total Property Taxes and Charges on Typical House": 2791
+  },
+  {
+    "year": 2024,
+    "municipality": "Maple Ridge",
+    "Population": 99996,
+    "Total Taxes Collected": 114487669,
+    "Typical House Value": 1279121,
+    "Total Property Taxes and Charges on Typical House": 6630
+  },
+  {
+    "year": 2024,
+    "municipality": "Masset",
+    "Population": 766,
+    "Total Taxes Collected": 1177572,
+    "Typical House Value": 231138,
+    "Total Property Taxes and Charges on Typical House": 3388
+  },
+  {
+    "year": 2024,
+    "municipality": "McBride",
+    "Population": 671,
+    "Total Taxes Collected": 581718,
+    "Typical House Value": 209134,
+    "Total Property Taxes and Charges on Typical House": 3135
+  },
+  {
+    "year": 2024,
+    "municipality": "Merritt",
+    "Population": 7809,
+    "Total Taxes Collected": 11480086,
+    "Typical House Value": 444902,
+    "Total Property Taxes and Charges on Typical House": 4417
+  },
+  {
+    "year": 2024,
+    "municipality": "Metchosin",
+    "Population": 5271,
+    "Total Taxes Collected": 3884855,
+    "Typical House Value": 1295819,
+    "Total Property Taxes and Charges on Typical House": 4380
+  },
+  {
+    "year": 2024,
+    "municipality": "Midway",
+    "Population": 738,
+    "Total Taxes Collected": 736516,
+    "Typical House Value": 332219,
+    "Total Property Taxes and Charges on Typical House": 2580
+  },
+  {
+    "year": 2024,
+    "municipality": "Mission",
+    "Population": 45231,
+    "Total Taxes Collected": 52330358,
+    "Typical House Value": 1132676,
+    "Total Property Taxes and Charges on Typical House": 5874
+  },
+  {
+    "year": 2024,
+    "municipality": "Montrose",
+    "Population": 1097,
+    "Total Taxes Collected": 277424,
+    "Typical House Value": 462563,
+    "Total Property Taxes and Charges on Typical House": 4384
+  },
+  {
+    "year": 2024,
+    "municipality": "Nakusp",
+    "Population": 1762,
+    "Total Taxes Collected": 1442817,
+    "Typical House Value": 416238,
+    "Total Property Taxes and Charges on Typical House": 3819
+  },
+  {
+    "year": 2024,
+    "municipality": "Nanaimo",
+    "Population": 108438,
+    "Total Taxes Collected": 156275560,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Nelson",
+    "Population": 11716,
+    "Total Taxes Collected": 12128609,
+    "Typical House Value": 689115,
+    "Total Property Taxes and Charges on Typical House": 5603
+  },
+  {
+    "year": 2024,
+    "municipality": "New Denver",
+    "Population": 520,
+    "Total Taxes Collected": 426100,
+    "Typical House Value": 410393,
+    "Total Property Taxes and Charges on Typical House": 2713
+  },
+  {
+    "year": 2024,
+    "municipality": "New Hazelton",
+    "Population": 667,
+    "Total Taxes Collected": 574325,
+    "Typical House Value": 211133,
+    "Total Property Taxes and Charges on Typical House": 3151
+  },
+  {
+    "year": 2024,
+    "municipality": "New Westminster",
+    "Population": 88945,
+    "Total Taxes Collected": 112401404,
+    "Typical House Value": 1615972,
+    "Total Property Taxes and Charges on Typical House": 10718
+  },
+  {
+    "year": 2024,
+    "municipality": "North Cowichan",
+    "Population": 34546,
+    "Total Taxes Collected": 39248014,
+    "Typical House Value": 767412,
+    "Total Property Taxes and Charges on Typical House": 5080
+  },
+  {
+    "year": 2024,
+    "municipality": "North Saanich",
+    "Population": 13198,
+    "Total Taxes Collected": 13618372,
+    "Typical House Value": 1622341,
+    "Total Property Taxes and Charges on Typical House": 5598
+  },
+  {
+    "year": 2024,
+    "municipality": "North Vancouver (City)",
+    "Population": 64847,
+    "Total Taxes Collected": 88323855,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "North Vancouver (District)",
+    "Population": 95350,
+    "Total Taxes Collected": 129060092,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Northern Rockies",
+    "Population": 4400,
+    "Total Taxes Collected": 29884526,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Oak Bay",
+    "Population": 19703,
+    "Total Taxes Collected": 32722897,
+    "Typical House Value": 1947809,
+    "Total Property Taxes and Charges on Typical House": 10249
+  },
+  {
+    "year": 2024,
+    "municipality": "Oliver",
+    "Population": 5824,
+    "Total Taxes Collected": 2978981,
+    "Typical House Value": 624998,
+    "Total Property Taxes and Charges on Typical House": 4400
+  },
+  {
+    "year": 2024,
+    "municipality": "Osoyoos",
+    "Population": 5730,
+    "Total Taxes Collected": 5906054,
+    "Typical House Value": 712642,
+    "Total Property Taxes and Charges on Typical House": 4956
+  },
+  {
+    "year": 2024,
+    "municipality": "Parksville",
+    "Population": 14710,
+    "Total Taxes Collected": 20089826,
+    "Typical House Value": 781915,
+    "Total Property Taxes and Charges on Typical House": 5536
+  },
+  {
+    "year": 2024,
+    "municipality": "Peachland",
+    "Population": 6382,
+    "Total Taxes Collected": 7669281,
+    "Typical House Value": 944181,
+    "Total Property Taxes and Charges on Typical House": 5309
+  },
+  {
+    "year": 2024,
+    "municipality": "Pemberton",
+    "Population": 3678,
+    "Total Taxes Collected": 2867024,
+    "Typical House Value": 1306282,
+    "Total Property Taxes and Charges on Typical House": 4515
+  },
+  {
+    "year": 2024,
+    "municipality": "Penticton",
+    "Population": 37943,
+    "Total Taxes Collected": 45841543,
+    "Typical House Value": 772659,
+    "Total Property Taxes and Charges on Typical House": 5402
+  },
+  {
+    "year": 2024,
+    "municipality": "Pitt Meadows",
+    "Population": 21071,
+    "Total Taxes Collected": 33682463,
+    "Typical House Value": 1200063,
+    "Total Property Taxes and Charges on Typical House": 6244
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Alberni",
+    "Population": 20264,
+    "Total Taxes Collected": 32010376,
+    "Typical House Value": 518716,
+    "Total Property Taxes and Charges on Typical House": 4615
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Alice",
+    "Population": 700,
+    "Total Taxes Collected": 774466,
+    "Typical House Value": 291622,
+    "Total Property Taxes and Charges on Typical House": 3025
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Clements",
+    "Population": 267,
+    "Total Taxes Collected": 159632,
+    "Typical House Value": 222333,
+    "Total Property Taxes and Charges on Typical House": 2144
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Coquitlam",
+    "Population": 67151,
+    "Total Taxes Collected": 84285906,
+    "Typical House Value": 1430546,
+    "Total Property Taxes and Charges on Typical House": 6023
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Edward",
+    "Population": 493,
+    "Total Taxes Collected": 2343776,
+    "Typical House Value": 299173,
+    "Total Property Taxes and Charges on Typical House": 3188
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Hardy",
+    "Population": 4552,
+    "Total Taxes Collected": 3978872,
+    "Typical House Value": 355986,
+    "Total Property Taxes and Charges on Typical House": 3935
+  },
+  {
+    "year": 2024,
+    "municipality": "Port McNeill",
+    "Population": 2591,
+    "Total Taxes Collected": 1937956,
+    "Typical House Value": 438317,
+    "Total Property Taxes and Charges on Typical House": 3570
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Moody",
+    "Population": 39316,
+    "Total Taxes Collected": 60956113,
+    "Typical House Value": 1894192,
+    "Total Property Taxes and Charges on Typical House": 8681
+  },
+  {
+    "year": 2024,
+    "municipality": "Pouce Coupe",
+    "Population": 832,
+    "Total Taxes Collected": 530014,
+    "Typical House Value": 232351,
+    "Total Property Taxes and Charges on Typical House": 3640
+  },
+  {
+    "year": 2024,
+    "municipality": "Powell River",
+    "Population": 14607,
+    "Total Taxes Collected": 25021127,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Prince George",
+    "Population": 84006,
+    "Total Taxes Collected": 140630330,
+    "Typical House Value": 453777,
+    "Total Property Taxes and Charges on Typical House": 5528
+  },
+  {
+    "year": 2024,
+    "municipality": "Prince Rupert",
+    "Population": 13536,
+    "Total Taxes Collected": 27613011,
+    "Typical House Value": 429058,
+    "Total Property Taxes and Charges on Typical House": 4916
+  },
+  {
+    "year": 2024,
+    "municipality": "Princeton",
+    "Population": 3333,
+    "Total Taxes Collected": 6105829,
+    "Typical House Value": 373062,
+    "Total Property Taxes and Charges on Typical House": 2685
+  },
+  {
+    "year": 2024,
+    "municipality": "Qualicum Beach",
+    "Population": 9663,
+    "Total Taxes Collected": 12981254,
+    "Typical House Value": 1017868,
+    "Total Property Taxes and Charges on Typical House": 6440
+  },
+  {
+    "year": 2024,
+    "municipality": "Quesnel",
+    "Population": 10422,
+    "Total Taxes Collected": 21129802,
+    "Typical House Value": 351097,
+    "Total Property Taxes and Charges on Typical House": 3737
+  },
+  {
+    "year": 2024,
+    "municipality": "Radium Hot Springs",
+    "Population": 1036,
+    "Total Taxes Collected": 1928885,
+    "Typical House Value": 438487,
+    "Total Property Taxes and Charges on Typical House": 3157
+  },
+  {
+    "year": 2024,
+    "municipality": "Revelstoke",
+    "Population": 8617,
+    "Total Taxes Collected": 16825351,
+    "Typical House Value": 832910,
+    "Total Property Taxes and Charges on Typical House": 5551
+  },
+  {
+    "year": 2024,
+    "municipality": "Richmond",
+    "Population": 229781,
+    "Total Taxes Collected": 312899338,
+    "Typical House Value": 2020469,
+    "Total Property Taxes and Charges on Typical House": 7956
+  },
+  {
+    "year": 2024,
+    "municipality": "Rossland",
+    "Population": 4390,
+    "Total Taxes Collected": 6304217,
+    "Typical House Value": 657378,
+    "Total Property Taxes and Charges on Typical House": 6007
+  },
+  {
+    "year": 2024,
+    "municipality": "Saanich",
+    "Population": 129786,
+    "Total Taxes Collected": 177008538,
+    "Typical House Value": 1288053,
+    "Total Property Taxes and Charges on Typical House": 7303
+  },
+  {
+    "year": 2024,
+    "municipality": "Salmo",
+    "Population": 1437,
+    "Total Taxes Collected": 482373,
+    "Typical House Value": 366706,
+    "Total Property Taxes and Charges on Typical House": 3223
+  },
+  {
+    "year": 2024,
+    "municipality": "Salmon Arm",
+    "Population": 21034,
+    "Total Taxes Collected": 23620839,
+    "Typical House Value": 659113,
+    "Total Property Taxes and Charges on Typical House": 4728
+  },
+  {
+    "year": 2024,
+    "municipality": "Sayward",
+    "Population": 305,
+    "Total Taxes Collected": null,
+    "Typical House Value": null,
+    "Total Property Taxes and Charges on Typical House": null
+  },
+  {
+    "year": 2024,
+    "municipality": "Sechelt",
+    "Population": 11707,
+    "Total Taxes Collected": 14192534,
+    "Typical House Value": 994039,
+    "Total Property Taxes and Charges on Typical House": 6588
+  },
+  {
+    "year": 2024,
+    "municipality": "Sicamous",
+    "Population": 3005,
+    "Total Taxes Collected": 5902380,
+    "Typical House Value": 551489,
+    "Total Property Taxes and Charges on Typical House": 4287
+  },
+  {
+    "year": 2024,
+    "municipality": "Sidney",
+    "Population": 12951,
+    "Total Taxes Collected": 16071636,
+    "Typical House Value": 1062443,
+    "Total Property Taxes and Charges on Typical House": 5170
+  },
+  {
+    "year": 2024,
+    "municipality": "Silverton",
+    "Population": 217,
+    "Total Taxes Collected": 202109,
+    "Typical House Value": 451105,
+    "Total Property Taxes and Charges on Typical House": 3234
+  },
+  {
+    "year": 2024,
+    "municipality": "Slocan",
+    "Population": 334,
+    "Total Taxes Collected": 225829,
+    "Typical House Value": 424461,
+    "Total Property Taxes and Charges on Typical House": 3209
+  },
+  {
+    "year": 2024,
+    "municipality": "Smithers",
+    "Population": 5879,
+    "Total Taxes Collected": 9464182,
+    "Typical House Value": 483353,
+    "Total Property Taxes and Charges on Typical House": 4687
+  },
+  {
+    "year": 2024,
+    "municipality": "Sooke",
+    "Population": 16866,
+    "Total Taxes Collected": 13511976,
+    "Typical House Value": 819492,
+    "Total Property Taxes and Charges on Typical House": 4242
+  },
+  {
+    "year": 2024,
+    "municipality": "Spallumcheen",
+    "Population": 5858,
+    "Total Taxes Collected": 7603048,
+    "Typical House Value": 621645,
+    "Total Property Taxes and Charges on Typical House": 4760
+  },
+  {
+    "year": 2024,
+    "municipality": "Sparwood",
+    "Population": 4265,
+    "Total Taxes Collected": 8819413,
+    "Typical House Value": 391770,
+    "Total Property Taxes and Charges on Typical House": 3512
+  },
+  {
+    "year": 2024,
+    "municipality": "Squamish",
+    "Population": 24655,
+    "Total Taxes Collected": 42594160,
+    "Typical House Value": 1500600,
+    "Total Property Taxes and Charges on Typical House": 6721
+  },
+  {
+    "year": 2024,
+    "municipality": "Stewart",
+    "Population": 438,
+    "Total Taxes Collected": 3280794,
+    "Typical House Value": 179066,
+    "Total Property Taxes and Charges on Typical House": 2491
+  },
+  {
+    "year": 2024,
+    "municipality": "Summerland",
+    "Population": 13310,
+    "Total Taxes Collected": 12138834,
+    "Typical House Value": 878446,
+    "Total Property Taxes and Charges on Typical House": 5524
+  },
+  {
+    "year": 2024,
+    "municipality": "Sun Peaks",
+    "Population": 1024,
+    "Total Taxes Collected": 2947696,
+    "Typical House Value": 1532625,
+    "Total Property Taxes and Charges on Typical House": 8185
+  },
+  {
+    "year": 2024,
+    "municipality": "Surrey",
+    "Population": 662561,
+    "Total Taxes Collected": 526468826,
+    "Typical House Value": 1741553,
+    "Total Property Taxes and Charges on Typical House": 7080
+  },
+  {
+    "year": 2024,
+    "municipality": "Tahsis",
+    "Population": 277,
+    "Total Taxes Collected": 938757,
+    "Typical House Value": 179332,
+    "Total Property Taxes and Charges on Typical House": 2944
+  },
+  {
+    "year": 2024,
+    "municipality": "Taylor",
+    "Population": 1606,
+    "Total Taxes Collected": 4491952,
+    "Typical House Value": 237742,
+    "Total Property Taxes and Charges on Typical House": 2845
+  },
+  {
+    "year": 2024,
+    "municipality": "Telkwa",
+    "Population": 1500,
+    "Total Taxes Collected": 1158657,
+    "Typical House Value": 408237,
+    "Total Property Taxes and Charges on Typical House": 4599
+  },
+  {
+    "year": 2024,
+    "municipality": "Terrace",
+    "Population": 13926,
+    "Total Taxes Collected": 19924047,
+    "Typical House Value": 461207,
+    "Total Property Taxes and Charges on Typical House": 4212
+  },
+  {
+    "year": 2024,
+    "municipality": "Tofino",
+    "Population": 2653,
+    "Total Taxes Collected": 6969124,
+    "Typical House Value": 1825165,
+    "Total Property Taxes and Charges on Typical House": 7740
+  },
+  {
+    "year": 2024,
+    "municipality": "Trail",
+    "Population": 8480,
+    "Total Taxes Collected": 17556504,
+    "Typical House Value": 382511,
+    "Total Property Taxes and Charges on Typical House": 3826
+  },
+  {
+    "year": 2024,
+    "municipality": "Tumbler Ridge",
+    "Population": 2301,
+    "Total Taxes Collected": 10904578,
+    "Typical House Value": 180748,
+    "Total Property Taxes and Charges on Typical House": 2556
+  },
+  {
+    "year": 2024,
+    "municipality": "Ucluelet",
+    "Population": 2309,
+    "Total Taxes Collected": 5732146,
+    "Typical House Value": 866584,
+    "Total Property Taxes and Charges on Typical House": 5438
+  },
+  {
+    "year": 2024,
+    "municipality": "Valemount",
+    "Population": 1018,
+    "Total Taxes Collected": 1102140,
+    "Typical House Value": 339328,
+    "Total Property Taxes and Charges on Typical House": 3860
+  },
+  {
+    "year": 2024,
+    "municipality": "Vancouver",
+    "Population": 725778,
+    "Total Taxes Collected": 1169137952,
+    "Typical House Value": 2673403,
+    "Total Property Taxes and Charges on Typical House": 9892
+  },
+  {
+    "year": 2024,
+    "municipality": "Vanderhoof",
+    "Population": 4839,
+    "Total Taxes Collected": 6221486,
+    "Typical House Value": 319708,
+    "Total Property Taxes and Charges on Typical House": 4236
+  },
+  {
+    "year": 2024,
+    "municipality": "Vernon",
+    "Population": 47265,
+    "Total Taxes Collected": 57827719,
+    "Typical House Value": 816341,
+    "Total Property Taxes and Charges on Typical House": 4800
+  },
+  {
+    "year": 2024,
+    "municipality": "Victoria",
+    "Population": 99792,
+    "Total Taxes Collected": 182286099,
+    "Typical House Value": 1228984,
+    "Total Property Taxes and Charges on Typical House": 6991
+  },
+  {
+    "year": 2024,
+    "municipality": "View Royal",
+    "Population": 13219,
+    "Total Taxes Collected": 12167191,
+    "Typical House Value": 1148366,
+    "Total Property Taxes and Charges on Typical House": 4986
+  },
+  {
+    "year": 2024,
+    "municipality": "Warfield",
+    "Population": 1881,
+    "Total Taxes Collected": 1155637,
+    "Typical House Value": 429717,
+    "Total Property Taxes and Charges on Typical House": 4631
+  },
+  {
+    "year": 2024,
+    "municipality": "Wells",
+    "Population": 227,
+    "Total Taxes Collected": 112751,
+    "Typical House Value": 178988,
+    "Total Property Taxes and Charges on Typical House": 2030
+  },
+  {
+    "year": 2024,
+    "municipality": "West Kelowna",
+    "Population": 46358,
+    "Total Taxes Collected": 45685024,
+    "Typical House Value": 1026040,
+    "Total Property Taxes and Charges on Typical House": 6504
+  },
+  {
+    "year": 2024,
+    "municipality": "West Vancouver",
+    "Population": 40715,
+    "Total Taxes Collected": 182114625,
+    "Typical House Value": 3691993,
+    "Total Property Taxes and Charges on Typical House": 12994
+  },
+  {
+    "year": 2024,
+    "municipality": "Whistler",
+    "Population": 14025,
+    "Total Taxes Collected": 52431125,
+    "Typical House Value": 3568356,
+    "Total Property Taxes and Charges on Typical House": 9999
+  },
+  {
+    "year": 2024,
+    "municipality": "White Rock",
+    "Population": 22362,
+    "Total Taxes Collected": 32227677,
+    "Typical House Value": 1992208,
+    "Total Property Taxes and Charges on Typical House": 8953
+  },
+  {
+    "year": 2024,
+    "municipality": "Williams Lake",
+    "Population": 11626,
+    "Total Taxes Collected": 17537920,
+    "Typical House Value": 377644,
+    "Total Property Taxes and Charges on Typical House": 4270
+  },
+  {
+    "year": 2024,
+    "municipality": "Zeballos",
+    "Population": 121,
+    "Total Taxes Collected": 236094,
+    "Typical House Value": 161276,
+    "Total Property Taxes and Charges on Typical House": 2857
+  },
+  {
+    "year": 2024,
+    "municipality": "sh\u00edsh\u00e1lh Nation Government District",
+    "Population": 792,
+    "Total Taxes Collected": 909042,
+    "Typical House Value": 522130,
+    "Total Property Taxes and Charges on Typical House": 3977
+  }
+]
