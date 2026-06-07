@@ -396,22 +396,18 @@ with ui.navset_tab():
                     munis = input.municipalities()
 
                     if view == "mayor":
-                        vals     = mayor_df["remuneration"].dropna()
                         sel_vals = mayor_df[mayor_df["municipality"].isin(munis)]["remuneration"].dropna()
                         title    = f"Distribution of Mayor Remuneration ({YEAR})"
                         def fmt_val(v): return f"${v:,.0f}"
                     elif view == "council":
-                        vals     = councillor_avg_df["remuneration"].dropna()
                         sel_vals = councillor_avg_df[councillor_avg_df["municipality"].isin(munis)]["remuneration"].dropna()
                         title    = f"Distribution of Average Councillor Remuneration by Municipality ({YEAR})"
                         def fmt_val(v): return f"${v:,.0f}"
                     else:
-                        vals     = councillor_to_mayor_df["ratio"].dropna()
                         sel_vals = councillor_to_mayor_df[councillor_to_mayor_df["municipality"].isin(munis)]["ratio"].dropna()
                         title    = f"Average Councillor Remuneration as % of Mayor Remuneration ({YEAR})"
                         def fmt_val(v): return f"{v:.1f}%"
 
-                    all_avg = vals.mean()     if not vals.empty     else float("nan")
                     sel_avg = sel_vals.mean() if not sel_vals.empty else float("nan")
 
                     def badge_val(v):
@@ -421,12 +417,7 @@ with ui.navset_tab():
                         ui.span(title),
                         ui.span(" | "),
                         ui.tags.span(
-                            ui.tags.small("All municipalities avg: ", style="opacity:.7;"),
-                            ui.tags.strong(badge_val(all_avg)),
-                            class_="badge text-bg-secondary me-1 fw-normal fs-6 px-2 py-1",
-                        ),
-                        ui.tags.span(
-                            ui.tags.small("Selected avg: ", style="opacity:.7;"),
+                            ui.tags.small("Avg of Selected: ", style="opacity:.7;"),
                             ui.tags.strong(badge_val(sel_avg)),
                             class_="badge text-bg-primary fw-normal fs-6 px-2 py-1",
                         ),
