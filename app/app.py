@@ -34,7 +34,7 @@ def load_remuneration_data(path=None):
 plot_df = load_remuneration_data()
 
 MUNICIPALITIES  = sorted(plot_df["municipality"].unique().tolist())
-DEFAULT_MUNIS   = ["Burnaby", "Coquitlam", "Richmond"]
+DEFAULT_MUNIS   = ["Burnaby", "North Vancouver (District)", "Pitt Meadows", "Powell River", "Squamish", ]
 YEAR            = int(plot_df["year"].max())
 mayor_df        = plot_df[plot_df["position"] == "Mayor"].copy()
 
@@ -77,6 +77,51 @@ _ptax = (
     .set_index("municipality")["Total Property Taxes and Charges on Typical House"]
     .astype(int)
 )
+
+scatter_df = (
+    mayor_df[["municipality", "remuneration"]]
+    .merge(
+        _muni_data[["municipality", "Population"]].dropna(),
+        on="municipality",
+        how="inner",
+    )
+    .rename(columns={"remuneration": "mayor_remuneration"})
+    .dropna()
+)
+
+scatter_ptax_df = (
+    mayor_df[["municipality", "remuneration"]]
+    .merge(
+        _muni_data[["municipality", "Total Property Taxes and Charges on Typical House"]].dropna(),
+        on="municipality",
+        how="inner",
+    )
+    .rename(columns={
+        "remuneration": "mayor_remuneration",
+        "Total Property Taxes and Charges on Typical House": "ptax",
+    })
+    .dropna()
+)
+
+scatter_taxes_df = (
+    mayor_df[["municipality", "remuneration"]]
+    .merge(
+        _muni_data[["municipality", "Total Taxes Collected"]].dropna(),
+        on="municipality",
+        how="inner",
+    )
+    .rename(columns={
+        "remuneration": "mayor_remuneration",
+        "Total Taxes Collected": "total_taxes",
+    })
+    .dropna()
+)
+
+TRENDS_CHOICES = {
+    "pop":   "Mayor Remuneration vs Population",
+    "ptax":  "Mayor Remuneration vs Property Tax on Typical House",
+    "taxes": "Mayor Remuneration vs Total Taxes Collected",
+}
 
 POP_MIN  = 500
 POP_MAX  = 100_000
@@ -185,6 +230,56 @@ def _build_fig(data, col, munis, x_title, tick_fmt, tick_suffix, label_fn):
     return fig
 
 
+def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix=""):
+    colors     = px.colors.qualitative.D3
+    selected   = data[data["municipality"].isin(munis)]
+    unselected = data[~data["municipality"].isin(munis)]
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=unselected[x_col],
+        y=unselected["mayor_remuneration"],
+        mode="markers",
+        marker=dict(color="rgba(150,150,150,0.4)", size=8),
+        text=unselected["municipality"],
+        hovertemplate=f"%{{text}}<br>{x_title}: %{{x:{x_fmt}}}{x_suffix}<br>Mayor: $%{{y:,.0f}}<extra></extra>",
+        showlegend=False,
+    ))
+
+    for i, (_, row) in enumerate(selected.iterrows()):
+        color = colors[i % len(colors)]
+        x_val = row[x_col]
+        y_val = row["mayor_remuneration"]
+        muni  = row["municipality"]
+        if x_suffix == "%":
+            x_str = f"{x_val:{x_fmt}}{x_suffix}"
+        elif x_fmt in ("$,.0f", ",.0f"):
+            x_str = f"${x_val:,.0f}"
+        else:
+            x_str = f"{x_val:,}"
+        fig.add_trace(go.Scatter(
+            x=[x_val],
+            y=[y_val],
+            mode="markers+text",
+            marker=dict(color=color, size=11, line=dict(color="white", width=1)),
+            text=[muni],
+            textposition="top center",
+            textfont=dict(color=color, size=11),
+            hovertemplate=f"{muni}<br>{x_title}: {x_str}<br>Mayor: ${y_val:,.0f}<extra></extra>",
+            showlegend=False,
+        ))
+
+    fig.update_layout(
+        xaxis_title=x_title,
+        yaxis_title=f"Mayor Remuneration ({YEAR})",
+        margin=dict(l=10, r=10, t=10, b=10),
+    )
+    fig.update_xaxes(tickformat=x_fmt, ticksuffix=x_suffix)
+    fig.update_yaxes(tickformat="$,.0f")
+    return fig
+
+
 # ---------------------------------------------------------------------------
 # Layout
 # ---------------------------------------------------------------------------
@@ -192,6 +287,10 @@ def _build_fig(data, col, munis, x_title, tick_fmt, tick_suffix, label_fn):
 ui.page_opts(title="Council Pay Dashboard", fillable=False)
 
 with ui.sidebar():
+
+    ui.markdown("Compare mayor and councillor remuneration across BC municipalities.")
+    ui.hr()
+
     ui.h6("Selected Municipalities")
     ui.input_selectize(
         "municipalities",
@@ -236,8 +335,22 @@ with ui.sidebar():
             sep=",",
             width="100%",
         )
-    ui.hr()
-    ui.markdown("Compare mayor and councillor remuneration across BC municipalities.")
+    ui.hr(),
+    ui.markdown(
+        "Data extracted from remuneration schedules in SOFI reports.  [View remuneration schedules](remuneration_schedules_2024.pdf)"
+        ),
+    ui.markdown(
+        "Not all municipalities are included.  If you would like a specific municipality included, please send me an email."
+        ),
+    ui.markdown(
+        "Dashboard by Andrew Hamilton, [Computing & Data Science at Capilano University](https://www.capilanou.ca/programs--courses/search--select/explore-our-areas-of-study/arts--sciences/school-of-science-technology-engineering--mathematics-stem/computing--data-science-department/).  "
+    ),
+    ui.markdown(
+        "Contact via [Linkedin](https://www.linkedin.com/in/andrew-hamilton-phd/) or [email](mailto:andrew@bcmunicipaldata.org).  "
+    ),
+    ui.markdown(
+        "Source code available at [Hamilton-at-CapU on GitHub](https://github.com/Hamilton-at-CapU/sofi-dashboard).  "
+    ),
 
 
 # ---------------------------------------------------------------------------
@@ -259,97 +372,147 @@ def _sync_muni_filter():
 
 
 # ---------------------------------------------------------------------------
-# Single card — content driven by input.view()
+# Tabs
 # ---------------------------------------------------------------------------
 
-with ui.card(full_screen=True, style="height:calc(100vh - 160px)"):
+with ui.navset_tab():
 
-    with ui.card_header(class_="d-flex align-items-center gap-2 flex-wrap"):
+    # ── Distribution tab ────────────────────────────────────────────────────
+    with ui.nav_panel("Distributions"):
+        with ui.card(full_screen=True, style="height:calc(100vh - 200px)"):
 
-        ui.input_select(
-            "view",
-            None,
-            choices=VIEW_CHOICES,
-            selected="mayor",
-        )
+            with ui.card_header(class_="d-flex align-items-center gap-2 flex-wrap"):
 
-        @render.ui
-        def card_header_content():
-            view  = input.view()
-            munis = input.municipalities()
+                ui.input_select(
+                    "view",
+                    None,
+                    choices=VIEW_CHOICES,
+                    selected="mayor",
+                )
 
-            if view == "mayor":
-                vals     = mayor_df["remuneration"].dropna()
-                sel_vals = mayor_df[mayor_df["municipality"].isin(munis)]["remuneration"].dropna()
-                title    = f"Distribution of Mayor Remuneration ({YEAR})"
-                def fmt_val(v): return f"${v:,.0f}"
-            elif view == "council":
-                vals     = councillor_avg_df["remuneration"].dropna()
-                sel_vals = councillor_avg_df[councillor_avg_df["municipality"].isin(munis)]["remuneration"].dropna()
-                title    = f"Distribution of Average Councillor Remuneration by Municipality ({YEAR})"
-                def fmt_val(v): return f"${v:,.0f}"
-            else:
-                vals     = councillor_to_mayor_df["ratio"].dropna()
-                sel_vals = councillor_to_mayor_df[councillor_to_mayor_df["municipality"].isin(munis)]["ratio"].dropna()
-                title    = f"Average Councillor Remuneration as % of Mayor Remuneration ({YEAR})"
-                def fmt_val(v): return f"{v:.1f}%"
+                @render.ui
+                def card_header_content():
+                    view  = input.view()
+                    munis = input.municipalities()
 
-            all_avg = vals.mean()     if not vals.empty     else float("nan")
-            sel_avg = sel_vals.mean() if not sel_vals.empty else float("nan")
+                    if view == "mayor":
+                        vals     = mayor_df["remuneration"].dropna()
+                        sel_vals = mayor_df[mayor_df["municipality"].isin(munis)]["remuneration"].dropna()
+                        title    = f"Distribution of Mayor Remuneration ({YEAR})"
+                        def fmt_val(v): return f"${v:,.0f}"
+                    elif view == "council":
+                        vals     = councillor_avg_df["remuneration"].dropna()
+                        sel_vals = councillor_avg_df[councillor_avg_df["municipality"].isin(munis)]["remuneration"].dropna()
+                        title    = f"Distribution of Average Councillor Remuneration by Municipality ({YEAR})"
+                        def fmt_val(v): return f"${v:,.0f}"
+                    else:
+                        vals     = councillor_to_mayor_df["ratio"].dropna()
+                        sel_vals = councillor_to_mayor_df[councillor_to_mayor_df["municipality"].isin(munis)]["ratio"].dropna()
+                        title    = f"Average Councillor Remuneration as % of Mayor Remuneration ({YEAR})"
+                        def fmt_val(v): return f"{v:.1f}%"
 
-            def badge_val(v):
-                return fmt_val(v) if not pd.isna(v) else "N/A"
+                    all_avg = vals.mean()     if not vals.empty     else float("nan")
+                    sel_avg = sel_vals.mean() if not sel_vals.empty else float("nan")
 
-            return ui.TagList(
-                ui.span(title),
-                ui.span(" | "),
-                ui.tags.span(
-                    ui.tags.small("All municipalities avg: ", style="opacity:.7;"),
-                    ui.tags.strong(badge_val(all_avg)),
-                    class_="badge text-bg-secondary me-1 fw-normal fs-6 px-2 py-1",
-                ),
-                ui.tags.span(
-                    ui.tags.small("Selected avg: ", style="opacity:.7;"),
-                    ui.tags.strong(badge_val(sel_avg)),
-                    class_="badge text-bg-primary fw-normal fs-6 px-2 py-1",
-                ),
-            )
+                    def badge_val(v):
+                        return fmt_val(v) if not pd.isna(v) else "N/A"
 
-    @render.ui
-    def card_footer_content():
-        footers = {
-            "mayor":   "Density distribution includes all municipalities with available data.",
-            "council": "Each point represents the average remuneration across all councillors (excluding mayor) for that municipality.",
-            "ratio":   "Each point is a municipality's mean councillor pay divided by its mayor's pay, expressed as a percentage.",
-        }
-        return ui.card_footer(footers[input.view()])
+                    return ui.TagList(
+                        ui.span(title),
+                        ui.span(" | "),
+                        ui.tags.span(
+                            ui.tags.small("All municipalities avg: ", style="opacity:.7;"),
+                            ui.tags.strong(badge_val(all_avg)),
+                            class_="badge text-bg-secondary me-1 fw-normal fs-6 px-2 py-1",
+                        ),
+                        ui.tags.span(
+                            ui.tags.small("Selected avg: ", style="opacity:.7;"),
+                            ui.tags.strong(badge_val(sel_avg)),
+                            class_="badge text-bg-primary fw-normal fs-6 px-2 py-1",
+                        ),
+                    )
 
-    @render_plotly
-    def main_chart():
-        view  = req(input.view())
-        munis = req(input.municipalities())
+            @render.ui
+            def card_footer_content():
+                footers = {
+                    "mayor":   "Density distribution includes all municipalities with available data.",
+                    "council": "Each point represents the average remuneration across all councillors (excluding mayor) for that municipality.",
+                    "ratio":   "Each point is a municipality's mean councillor pay divided by its mayor's pay, expressed as a percentage.",
+                }
+                return ui.card_footer(footers[input.view()])
 
-        if view == "mayor":
-            data = mayor_df[["municipality", "remuneration"]].dropna()
-            return _build_fig(
-                data, "remuneration", munis,
-                x_title=f"Mayor Remuneration ({YEAR})",
-                tick_fmt="$,.0f", tick_suffix="",
-                label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-            )
-        elif view == "council":
-            data = councillor_avg_df.dropna(subset=["remuneration"])
-            return _build_fig(
-                data, "remuneration", munis,
-                x_title=f"Average Councillor Remuneration ({YEAR})",
-                tick_fmt="$,.0f", tick_suffix="",
-                label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-            )
-        else:
-            data = councillor_to_mayor_df.dropna(subset=["ratio"])
-            return _build_fig(
-                data, "ratio", munis,
-                x_title=f"Avg Councillor Remuneration as % of Mayor ({YEAR})",
-                tick_fmt=".1f", tick_suffix="%",
-                label_fn=lambda v, p: f"{v:.1f}%, {p:.0f}th pct",
-            )
+            @render_plotly
+            def main_chart():
+                view  = req(input.view())
+                munis = req(input.municipalities())
+
+                if view == "mayor":
+                    data = mayor_df[["municipality", "remuneration"]].dropna()
+                    return _build_fig(
+                        data, "remuneration", munis,
+                        x_title=f"Mayor Remuneration ({YEAR})",
+                        tick_fmt="$,.0f", tick_suffix="",
+                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
+                    )
+                elif view == "council":
+                    data = councillor_avg_df.dropna(subset=["remuneration"])
+                    return _build_fig(
+                        data, "remuneration", munis,
+                        x_title=f"Average Councillor Remuneration ({YEAR})",
+                        tick_fmt="$,.0f", tick_suffix="",
+                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
+                    )
+                else:
+                    data = councillor_to_mayor_df.dropna(subset=["ratio"])
+                    return _build_fig(
+                        data, "ratio", munis,
+                        x_title=f"Avg Councillor Remuneration as % of Mayor ({YEAR})",
+                        tick_fmt=".1f", tick_suffix="%",
+                        label_fn=lambda v, p: f"{v:.1f}%, {p:.0f}th pct",
+                    )
+
+    # ── Trends tab ──────────────────────────────────────────────────────────
+    with ui.nav_panel("Trends"):
+        with ui.card(full_screen=True, style="height:calc(100vh - 200px)"):
+
+            with ui.card_header(class_="d-flex align-items-center gap-2 flex-wrap"):
+                ui.input_select(
+                    "trends_view",
+                    None,
+                    choices=TRENDS_CHOICES,
+                    selected="pop",
+                )
+
+                @render.ui
+                def trends_header_content():
+                    return ui.span(f"({YEAR})")
+
+            @render.ui
+            def trends_footer_content():
+                return ui.card_footer(
+                    "Each point is a municipality. Selected municipalities are highlighted and labelled."
+                )
+
+            @render_plotly
+            def trends_chart():
+                munis = req(input.municipalities())
+                tview = req(input.trends_view())
+
+                if tview == "pop":
+                    return _build_scatter(
+                        scatter_df, "Population", munis,
+                        x_title=f"Population ({YEAR})",
+                        x_fmt=",",
+                    )
+                elif tview == "ptax":
+                    return _build_scatter(
+                        scatter_ptax_df, "ptax", munis,
+                        x_title=f"Property Tax on Typical House ({YEAR})",
+                        x_fmt="$,.0f",
+                    )
+                else:
+                    return _build_scatter(
+                        scatter_taxes_df, "total_taxes", munis,
+                        x_title=f"Total Taxes Collected ({YEAR})",
+                        x_fmt="$,.0f",
+                    )
