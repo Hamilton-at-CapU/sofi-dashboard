@@ -1,0 +1,2594 @@
+[
+  {
+    "year": 2024,
+    "municipality": "Abbotsford",
+    "councillors": [
+      {
+        "name": "SIEMENS ROSS",
+        "position": "Mayor",
+        "remuneration": 154608,
+        "expenses": 4561
+      },
+      {
+        "name": "BARKMAN LESTER",
+        "position": "Councillor",
+        "remuneration": 59321,
+        "expenses": 5673
+      },
+      {
+        "name": "CHAHAL KELLY",
+        "position": "Councillor",
+        "remuneration": 59224,
+        "expenses": 2151
+      },
+      {
+        "name": "LOEWEN DAVE",
+        "position": "Councillor",
+        "remuneration": 61162,
+        "expenses": 3770
+      },
+      {
+        "name": "ROSS PATRICIA",
+        "position": "Councillor",
+        "remuneration": 57523,
+        "expenses": 1343
+      },
+      {
+        "name": "SIDHU KHUSHDAVE",
+        "position": "Councillor",
+        "remuneration": 61162,
+        "expenses": 232
+      },
+      {
+        "name": "DRIESSEN PATRICIA",
+        "position": "Councillor",
+        "remuneration": 61123,
+        "expenses": 4382
+      },
+      {
+        "name": "GIBSON SIMON",
+        "position": "Councillor",
+        "remuneration": 57523,
+        "expenses": 4689
+      },
+      {
+        "name": "WARKENTIN MARK",
+        "position": "Councillor",
+        "remuneration": 57523,
+        "expenses": 3388
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Armstrong",
+    "councillors": [
+      {
+        "name": "CRAMER, W.",
+        "position": "Mayor",
+        "remuneration": 29333,
+        "expenses": 6472
+      },
+      {
+        "name": "DRAPALA, S.",
+        "position": "Councillor",
+        "remuneration": 17079,
+        "expenses": 0
+      },
+      {
+        "name": "FOWLER, S.",
+        "position": "Councillor",
+        "remuneration": 16979,
+        "expenses": 0
+      },
+      {
+        "name": "NITCHIE, R.",
+        "position": "Councillor",
+        "remuneration": 16979,
+        "expenses": 0
+      },
+      {
+        "name": "TODD, N.",
+        "position": "Councillor",
+        "remuneration": 16979,
+        "expenses": 0
+      },
+      {
+        "name": "VALSTAR, J.",
+        "position": "Councillor",
+        "remuneration": 16979,
+        "expenses": 0
+      },
+      {
+        "name": "WEHNER, M.",
+        "position": "Councillor",
+        "remuneration": 16979,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Burnaby",
+    "councillors": [
+      {
+        "name": "Hurley, Mike",
+        "position": "Mayor",
+        "remuneration": 203578,
+        "expenses": 7369
+      },
+      {
+        "name": "Calendino, Pietro",
+        "position": "Councillor",
+        "remuneration": 92373,
+        "expenses": 8099
+      },
+      {
+        "name": "Dhaliwal, Sav",
+        "position": "Councillor",
+        "remuneration": 92373,
+        "expenses": 2457
+      },
+      {
+        "name": "Gu, Alison",
+        "position": "Councillor",
+        "remuneration": 92373,
+        "expenses": 3923
+      },
+      {
+        "name": "Keithley, Joe",
+        "position": "Councillor",
+        "remuneration": 93137,
+        "expenses": 3257
+      },
+      {
+        "name": "Lee, Richard",
+        "position": "Councillor",
+        "remuneration": 92373,
+        "expenses": 9934
+      },
+      {
+        "name": "Santiago, Maita",
+        "position": "Councillor",
+        "remuneration": 93137,
+        "expenses": 7189
+      },
+      {
+        "name": "Tetrault, Daniel",
+        "position": "Councillor",
+        "remuneration": 93137,
+        "expenses": 4422
+      },
+      {
+        "name": "Wang, James",
+        "position": "Councillor",
+        "remuneration": 93137,
+        "expenses": 11227
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Campbell River",
+    "councillors": [
+      {
+        "name": "Kermit Dahl",
+        "position": "Mayor",
+        "remuneration": 83183,
+        "expenses": 12985
+      },
+      {
+        "name": "Douglas Chapman",
+        "position": "Councillor",
+        "remuneration": 31609,
+        "expenses": 4705
+      },
+      {
+        "name": "Tanile Johnstone",
+        "position": "Councillor",
+        "remuneration": 31609,
+        "expenses": 4721
+      },
+      {
+        "name": "Ron Kerr",
+        "position": "Councillor",
+        "remuneration": 31609,
+        "expenses": 10412
+      },
+      {
+        "name": "Ben Lanyon",
+        "position": "Councillor",
+        "remuneration": 31609,
+        "expenses": 414
+      },
+      {
+        "name": "Susan Sinnott",
+        "position": "Councillor",
+        "remuneration": 31609,
+        "expenses": 10593
+      },
+      {
+        "name": "Sean Smyth",
+        "position": "Councillor",
+        "remuneration": 31609,
+        "expenses": 5244
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Chilliwack",
+    "councillors": [
+      {
+        "name": "Ken Popove",
+        "position": "Mayor",
+        "remuneration": 140389,
+        "expenses": 1950
+      },
+      {
+        "name": "Chris Kloot",
+        "position": "Councillor",
+        "remuneration": 53882,
+        "expenses": 2990
+      },
+      {
+        "name": "Jason Lum",
+        "position": "Councillor",
+        "remuneration": 56686,
+        "expenses": 1956
+      },
+      {
+        "name": "Bud Mercer",
+        "position": "Councillor",
+        "remuneration": 53873,
+        "expenses": 4580
+      },
+      {
+        "name": "Nicole Read",
+        "position": "Councillor",
+        "remuneration": 55741,
+        "expenses": 1168
+      },
+      {
+        "name": "Jeff Shields",
+        "position": "Councillor",
+        "remuneration": 55741,
+        "expenses": 1290
+      },
+      {
+        "name": "Harv Westeringh",
+        "position": "Councillor",
+        "remuneration": 54302,
+        "expenses": 1506
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Coldstream",
+    "councillors": [
+      {
+        "name": "Hoyte, Ruth",
+        "position": "Mayor",
+        "remuneration": 40382,
+        "expenses": 6161
+      },
+      {
+        "name": "Cochrane, Patrick",
+        "position": "Councillor",
+        "remuneration": 19922,
+        "expenses": 286
+      },
+      {
+        "name": "Dirk, Douglas",
+        "position": "Councillor",
+        "remuneration": 22029,
+        "expenses": 286
+      },
+      {
+        "name": "Garlick, James",
+        "position": "Councillor",
+        "remuneration": 19659,
+        "expenses": 586
+      },
+      {
+        "name": "Hoffman, Stephanie",
+        "position": "Councillor",
+        "remuneration": 18078,
+        "expenses": 4641
+      },
+      {
+        "name": "Levy, Jeremy",
+        "position": "Councillor",
+        "remuneration": 20975,
+        "expenses": 7711
+      },
+      {
+        "name": "Runyan, Simone",
+        "position": "Councillor",
+        "remuneration": 18605,
+        "expenses": 1324
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Colwood",
+    "councillors": [
+      {
+        "name": "KOBAYASHI,DOUG",
+        "position": "Mayor",
+        "remuneration": 57770,
+        "expenses": 145
+      },
+      {
+        "name": "DAY,CYNTHIA",
+        "position": "Councillor",
+        "remuneration": 28885,
+        "expenses": 3488
+      },
+      {
+        "name": "GROVE,DAVID",
+        "position": "Councillor",
+        "remuneration": 28885,
+        "expenses": 2319
+      },
+      {
+        "name": "JANTZEN,DEAN",
+        "position": "Councillor",
+        "remuneration": 28885,
+        "expenses": 562
+      },
+      {
+        "name": "JORDISON,KIMBERLY",
+        "position": "Councillor",
+        "remuneration": 28885,
+        "expenses": 2252
+      },
+      {
+        "name": "OLSEN,MISTY",
+        "position": "Councillor",
+        "remuneration": 28885,
+        "expenses": 4606
+      },
+      {
+        "name": "WARD,IAN",
+        "position": "Councillor",
+        "remuneration": 28885,
+        "expenses": 2198
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Comox",
+    "councillors": [
+      {
+        "name": "Nicole Minions",
+        "position": "Mayor",
+        "remuneration": 60845,
+        "expenses": 12439
+      },
+      {
+        "name": "Steve Blacklock",
+        "position": "Councillor",
+        "remuneration": 27534,
+        "expenses": 3570
+      },
+      {
+        "name": "Ken Grant",
+        "position": "Councillor",
+        "remuneration": 27534,
+        "expenses": 959
+      },
+      {
+        "name": "Chris Haslett",
+        "position": "Councillor",
+        "remuneration": 27534,
+        "expenses": 4717
+      },
+      {
+        "name": "Jonathan Kerr",
+        "position": "Councillor",
+        "remuneration": 27534,
+        "expenses": 6170
+      },
+      {
+        "name": "Jenn Meilleur",
+        "position": "Councillor",
+        "remuneration": 27534,
+        "expenses": 2691
+      },
+      {
+        "name": "Maureen Swift",
+        "position": "Councillor",
+        "remuneration": 27534,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Coquitlam",
+    "councillors": [
+      {
+        "name": "Stewart, Richard",
+        "position": "Mayor",
+        "remuneration": 210894,
+        "expenses": 8438
+      },
+      {
+        "name": "Asmundson, Brent",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 4651
+      },
+      {
+        "name": "Djonlic, Matthew",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 4938
+      },
+      {
+        "name": "Hodge, Craig",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 6680
+      },
+      {
+        "name": "Kim, Steve",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 890
+      },
+      {
+        "name": "Mandewo, Trish",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 960
+      },
+      {
+        "name": "Marsden, Dennis",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 3741
+      },
+      {
+        "name": "Mazzarolo, Robert",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 675
+      },
+      {
+        "name": "Towner, Teri",
+        "position": "Councillor",
+        "remuneration": 84072,
+        "expenses": 7724
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Courtenay",
+    "councillors": [
+      {
+        "name": "Wells, Robert",
+        "position": "Mayor",
+        "remuneration": 84718,
+        "expenses": 13531
+      },
+      {
+        "name": "Frisch, David",
+        "position": "Councillor",
+        "remuneration": 33941,
+        "expenses": 1569
+      },
+      {
+        "name": "Hillian, Douglas A.",
+        "position": "Councillor",
+        "remuneration": 35353,
+        "expenses": 6848
+      },
+      {
+        "name": "Jolicoeur, Evan",
+        "position": "Councillor",
+        "remuneration": 35353,
+        "expenses": 10637
+      },
+      {
+        "name": "McCollum, Melanie",
+        "position": "Councillor",
+        "remuneration": 35353,
+        "expenses": 9254
+      },
+      {
+        "name": "Morin, Wendy",
+        "position": "Councillor",
+        "remuneration": 36045,
+        "expenses": 10210
+      },
+      {
+        "name": "Cole-Hamilton, Will",
+        "position": "Councillor",
+        "remuneration": 36059,
+        "expenses": 7188
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Cranbrook",
+    "councillors": [
+      {
+        "name": "Price, W.",
+        "position": "Mayor",
+        "remuneration": 76003,
+        "expenses": 6217
+      },
+      {
+        "name": "Blissett, N.",
+        "position": "Councillor",
+        "remuneration": 27712,
+        "expenses": 480
+      },
+      {
+        "name": "Graham, W.",
+        "position": "Councillor",
+        "remuneration": 27712,
+        "expenses": 10201
+      },
+      {
+        "name": "Peabody, M.",
+        "position": "Councillor",
+        "remuneration": 27712,
+        "expenses": 410
+      },
+      {
+        "name": "Popoff, R.",
+        "position": "Councillor",
+        "remuneration": 27712,
+        "expenses": 5405
+      },
+      {
+        "name": "Stetski, W.",
+        "position": "Councillor",
+        "remuneration": 27712,
+        "expenses": 4452
+      },
+      {
+        "name": "Wray, L.",
+        "position": "Councillor",
+        "remuneration": 27712,
+        "expenses": 6531
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Dawson Creek",
+    "councillors": [
+      {
+        "name": "Dober, D",
+        "position": "Mayor",
+        "remuneration": 79788,
+        "expenses": 16918
+      },
+      {
+        "name": "Apolonio, G",
+        "position": "Councillor",
+        "remuneration": 27135,
+        "expenses": 5436
+      },
+      {
+        "name": "Earl, J",
+        "position": "Councillor",
+        "remuneration": 27135,
+        "expenses": 5452
+      },
+      {
+        "name": "Kaempf, A",
+        "position": "Councillor",
+        "remuneration": 27135,
+        "expenses": 8207
+      },
+      {
+        "name": "MacDonald, K",
+        "position": "Councillor",
+        "remuneration": 27135,
+        "expenses": 19149
+      },
+      {
+        "name": "Parslow, C",
+        "position": "Councillor",
+        "remuneration": 27135,
+        "expenses": 4192
+      },
+      {
+        "name": "Sudnik, M",
+        "position": "Councillor",
+        "remuneration": 27135,
+        "expenses": 13541
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Delta",
+    "councillors": [
+      {
+        "name": "G. Harvie",
+        "position": "Mayor",
+        "remuneration": 182919,
+        "expenses": 3199
+      },
+      {
+        "name": "R. Binder",
+        "position": "Councillor",
+        "remuneration": 77838,
+        "expenses": 10342
+      },
+      {
+        "name": "D. Boisvert",
+        "position": "Councillor",
+        "remuneration": 77838,
+        "expenses": 5884
+      },
+      {
+        "name": "J. Dosanjh",
+        "position": "Councillor",
+        "remuneration": 77838,
+        "expenses": 735
+      },
+      {
+        "name": "A. Guichon",
+        "position": "Councillor",
+        "remuneration": 77838,
+        "expenses": 520
+      },
+      {
+        "name": "J. Johal",
+        "position": "Councillor",
+        "remuneration": 77838,
+        "expenses": 9918
+      },
+      {
+        "name": "D. Kruger",
+        "position": "Councillor",
+        "remuneration": 96143,
+        "expenses": 4559
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Esquimalt",
+    "councillors": [
+      {
+        "name": "Desjardins Barbara",
+        "position": "Mayor",
+        "remuneration": 68081,
+        "expenses": 3258
+      },
+      {
+        "name": "Armour Kenneth",
+        "position": "Councillor",
+        "remuneration": 30909,
+        "expenses": 3717
+      },
+      {
+        "name": "Boardman Andrea",
+        "position": "Councillor",
+        "remuneration": 30909,
+        "expenses": 4344
+      },
+      {
+        "name": "Cavens Duncan",
+        "position": "Councillor",
+        "remuneration": 30909,
+        "expenses": 3671
+      },
+      {
+        "name": "Helliwell Jacob",
+        "position": "Councillor",
+        "remuneration": 30909,
+        "expenses": 3366
+      },
+      {
+        "name": "Morrison Timothy",
+        "position": "Councillor",
+        "remuneration": 30909,
+        "expenses": 3360
+      },
+      {
+        "name": "Rotchford Darlene",
+        "position": "Councillor",
+        "remuneration": 26142,
+        "expenses": 4510
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Fort St. John",
+    "councillors": [
+      {
+        "name": "Hansen, Lilia",
+        "position": "Mayor",
+        "remuneration": 103791,
+        "expenses": 15034
+      },
+      {
+        "name": "Bolin, Trevor",
+        "position": "Councillor",
+        "remuneration": 39447,
+        "expenses": 322
+      },
+      {
+        "name": "Klassen, Gordon",
+        "position": "Councillor",
+        "remuneration": 41207,
+        "expenses": 18648
+      },
+      {
+        "name": "Lequiere, Jim",
+        "position": "Councillor",
+        "remuneration": 41184,
+        "expenses": 0
+      },
+      {
+        "name": "MacDougall, Sarah",
+        "position": "Councillor",
+        "remuneration": 39947,
+        "expenses": 8350
+      },
+      {
+        "name": "Stewart, Byron",
+        "position": "Councillor",
+        "remuneration": 41207,
+        "expenses": 6027
+      },
+      {
+        "name": "Zabinsky, Tony",
+        "position": "Councillor",
+        "remuneration": 41111,
+        "expenses": 13684
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Kamloops",
+    "councillors": [
+      {
+        "name": "Hamer-Jackson, Reid",
+        "position": "Mayor",
+        "remuneration": 120059,
+        "expenses": 3101
+      },
+      {
+        "name": "Bass, M. Dale",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 7432
+      },
+      {
+        "name": "Bepple, Nancy",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 12893
+      },
+      {
+        "name": "Hall, Kelton",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 10610
+      },
+      {
+        "name": "Karpuk, Stephen",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 6026
+      },
+      {
+        "name": "Middleton (Waithe), Margot",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 5259
+      },
+      {
+        "name": "Neustaeter, Keturah",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 8868
+      },
+      {
+        "name": "O'Reilly, Michael",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 8218
+      },
+      {
+        "name": "Sarai, Bill",
+        "position": "Councillor",
+        "remuneration": 52333,
+        "expenses": 12368
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Lake Country",
+    "councillors": [
+      {
+        "name": "Ireland, B",
+        "position": "Mayor",
+        "remuneration": 60231,
+        "expenses": 13536
+      },
+      {
+        "name": "Brett, T",
+        "position": "Councillor",
+        "remuneration": 24092,
+        "expenses": 0
+      },
+      {
+        "name": "Irvine, H",
+        "position": "Councillor",
+        "remuneration": 24092,
+        "expenses": 0
+      },
+      {
+        "name": "Lewis, M",
+        "position": "Councillor",
+        "remuneration": 24092,
+        "expenses": 0
+      },
+      {
+        "name": "McKenzie, T",
+        "position": "Councillor",
+        "remuneration": 24113,
+        "expenses": 0
+      },
+      {
+        "name": "Patel, B",
+        "position": "Councillor",
+        "remuneration": 24092,
+        "expenses": 0
+      },
+      {
+        "name": "Reed, C",
+        "position": "Councillor",
+        "remuneration": 24092,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Langford",
+    "councillors": [
+      {
+        "name": "Goodmanson, Scott",
+        "position": "Mayor",
+        "remuneration": 88985,
+        "expenses": 9787
+      },
+      {
+        "name": "Guiry, Kimberley",
+        "position": "Councillor",
+        "remuneration": 32152,
+        "expenses": 7542
+      },
+      {
+        "name": "Harder, Colby",
+        "position": "Councillor",
+        "remuneration": 32152,
+        "expenses": 8043
+      },
+      {
+        "name": "Morley, Mark",
+        "position": "Councillor",
+        "remuneration": 33543,
+        "expenses": 5182
+      },
+      {
+        "name": "Szpak, Lillian",
+        "position": "Councillor",
+        "remuneration": 32152,
+        "expenses": 7940
+      },
+      {
+        "name": "Wagner, Mary",
+        "position": "Councillor",
+        "remuneration": 34559,
+        "expenses": 7853
+      },
+      {
+        "name": "Yacucha, Keith",
+        "position": "Councillor",
+        "remuneration": 40004,
+        "expenses": 7321
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Langley (District)",
+    "councillors": [
+      {
+        "name": "Woodward, Eric",
+        "position": "Mayor",
+        "remuneration": 168953,
+        "expenses": 6803
+      },
+      {
+        "name": "Baillie, Timothy",
+        "position": "Councillor",
+        "remuneration": 71213,
+        "expenses": 6629
+      },
+      {
+        "name": "Ferguson, Stephen",
+        "position": "Councillor",
+        "remuneration": 62819,
+        "expenses": 7914
+      },
+      {
+        "name": "Kunst, Margaret",
+        "position": "Councillor",
+        "remuneration": 62819,
+        "expenses": 1636
+      },
+      {
+        "name": "Martens, Barbara",
+        "position": "Councillor",
+        "remuneration": 63281,
+        "expenses": 3754
+      },
+      {
+        "name": "Pratt, Michael",
+        "position": "Councillor",
+        "remuneration": 62819,
+        "expenses": 7933
+      },
+      {
+        "name": "Richter, Kim",
+        "position": "Councillor",
+        "remuneration": 62819,
+        "expenses": 8604
+      },
+      {
+        "name": "Rindt, Rob",
+        "position": "Councillor",
+        "remuneration": 70740,
+        "expenses": 708
+      },
+      {
+        "name": "vanPopta, Mistelle",
+        "position": "Councillor",
+        "remuneration": 62349,
+        "expenses": 1092
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Maple Ridge",
+    "councillors": [
+      {
+        "name": "Ruimy, Daniel",
+        "position": "Mayor",
+        "remuneration": 143146,
+        "expenses": 3152
+      },
+      {
+        "name": "Carreras, Korleen A.",
+        "position": "Councillor",
+        "remuneration": 61225,
+        "expenses": 294
+      },
+      {
+        "name": "Dozie, Onyeka",
+        "position": "Councillor",
+        "remuneration": 61521,
+        "expenses": 6658
+      },
+      {
+        "name": "Dueck, Judy",
+        "position": "Councillor",
+        "remuneration": 61179,
+        "expenses": 4541
+      },
+      {
+        "name": "Mohamed, Ahmed A.",
+        "position": "Councillor",
+        "remuneration": 61327,
+        "expenses": 6046
+      },
+      {
+        "name": "Schiller, Sunny",
+        "position": "Councillor",
+        "remuneration": 61313,
+        "expenses": 6658
+      },
+      {
+        "name": "Tan, Jenny",
+        "position": "Councillor",
+        "remuneration": 61627,
+        "expenses": 4339
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Mission",
+    "councillors": [
+      {
+        "name": "P. Horn",
+        "position": "Mayor",
+        "remuneration": 100653,
+        "expenses": 7244
+      },
+      {
+        "name": "C. Hamilton",
+        "position": "Councillor",
+        "remuneration": 50327,
+        "expenses": 3491
+      },
+      {
+        "name": "D. Plecas",
+        "position": "Councillor",
+        "remuneration": 50327,
+        "expenses": 3850
+      },
+      {
+        "name": "M. Davies",
+        "position": "Councillor",
+        "remuneration": 50327,
+        "expenses": 2773
+      },
+      {
+        "name": "J. Gill",
+        "position": "Councillor",
+        "remuneration": 50327,
+        "expenses": 5203
+      },
+      {
+        "name": "K. Herar",
+        "position": "Councillor",
+        "remuneration": 50327,
+        "expenses": 23
+      },
+      {
+        "name": "A. Elias",
+        "position": "Councillor",
+        "remuneration": 50327,
+        "expenses": 1527
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Nanaimo",
+    "councillors": [
+      {
+        "name": "Krog, Leonard",
+        "position": "Mayor",
+        "remuneration": 131790,
+        "expenses": 3887
+      },
+      {
+        "name": "Armstrong, Sheryl",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 10076
+      },
+      {
+        "name": "Brown, Tyler",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 4847
+      },
+      {
+        "name": "Eastmure, Hiliary",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 11660
+      },
+      {
+        "name": "Geselbracht, Ben",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 9371
+      },
+      {
+        "name": "Hemmens, Erin",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 7710
+      },
+      {
+        "name": "Manly, Paul",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 11600
+      },
+      {
+        "name": "Perrino, Janice",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 11105
+      },
+      {
+        "name": "Thorpe, Ian",
+        "position": "Councillor",
+        "remuneration": 52014,
+        "expenses": 7201
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Nelson",
+    "councillors": [
+      {
+        "name": "Morrison, J",
+        "position": "Mayor",
+        "remuneration": 71888,
+        "expenses": 12361
+      },
+      {
+        "name": "Logtenberg, R",
+        "position": "Councillor",
+        "remuneration": 28289,
+        "expenses": 6360
+      },
+      {
+        "name": "Page, K",
+        "position": "Councillor",
+        "remuneration": 28289,
+        "expenses": 1325
+      },
+      {
+        "name": "Payne, L",
+        "position": "Councillor",
+        "remuneration": 28289,
+        "expenses": 10466
+      },
+      {
+        "name": "Pineiro, J",
+        "position": "Councillor",
+        "remuneration": 28289,
+        "expenses": 1466
+      },
+      {
+        "name": "Tait, E",
+        "position": "Councillor",
+        "remuneration": 28289,
+        "expenses": 5574
+      },
+      {
+        "name": "Woodward, J",
+        "position": "Councillor",
+        "remuneration": 28289,
+        "expenses": 1544
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "New Westminster",
+    "councillors": [
+      {
+        "name": "Johnstone, Patrick",
+        "position": "Mayor",
+        "remuneration": 155560,
+        "expenses": 7329
+      },
+      {
+        "name": "Campbell, Suman Ruby",
+        "position": "Councillor",
+        "remuneration": 62063,
+        "expenses": 3242
+      },
+      {
+        "name": "Fontaine, Daniel Omer Joseph",
+        "position": "Councillor",
+        "remuneration": 62063,
+        "expenses": 1485
+      },
+      {
+        "name": "Henderson, Tasha Diane",
+        "position": "Councillor",
+        "remuneration": 62063,
+        "expenses": 6128
+      },
+      {
+        "name": "McEvoy, Jaimie",
+        "position": "Councillor",
+        "remuneration": 62063,
+        "expenses": 332
+      },
+      {
+        "name": "Minhas, Mohinderpal Singh",
+        "position": "Councillor",
+        "remuneration": 62063,
+        "expenses": 1182
+      },
+      {
+        "name": "Nakagawa, Nadine M.",
+        "position": "Councillor",
+        "remuneration": 62063,
+        "expenses": 2583
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "North Cowichan",
+    "councillors": [
+      {
+        "name": "Douglas, R",
+        "position": "Mayor",
+        "remuneration": 93472,
+        "expenses": 8333
+      },
+      {
+        "name": "Caljouw, M",
+        "position": "Councillor",
+        "remuneration": 33239,
+        "expenses": 12245
+      },
+      {
+        "name": "Findlay, B",
+        "position": "Councillor",
+        "remuneration": 33239,
+        "expenses": 7078
+      },
+      {
+        "name": "Istace, C",
+        "position": "Councillor",
+        "remuneration": 34617,
+        "expenses": 5484
+      },
+      {
+        "name": "Justice, C",
+        "position": "Councillor",
+        "remuneration": 34852,
+        "expenses": 6949
+      },
+      {
+        "name": "Manhas, T",
+        "position": "Councillor",
+        "remuneration": 34435,
+        "expenses": 11171
+      },
+      {
+        "name": "Toporowski, D",
+        "position": "Councillor",
+        "remuneration": 33075,
+        "expenses": 2327
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "North Saanich",
+    "councillors": [
+      {
+        "name": "Jones, Peter",
+        "position": "Mayor",
+        "remuneration": 35914,
+        "expenses": 682
+      },
+      {
+        "name": "DiBattista, Phillip",
+        "position": "Councillor",
+        "remuneration": 18694,
+        "expenses": 5476
+      },
+      {
+        "name": "McClintock, John (Jack)",
+        "position": "Councillor",
+        "remuneration": 18694,
+        "expenses": 4340
+      },
+      {
+        "name": "McConkey, Irene",
+        "position": "Councillor",
+        "remuneration": 18694,
+        "expenses": 321
+      },
+      {
+        "name": "Shrivastava, Sanjiv",
+        "position": "Councillor",
+        "remuneration": 18694,
+        "expenses": 6386
+      },
+      {
+        "name": "Stock, Celia",
+        "position": "Councillor",
+        "remuneration": 18694,
+        "expenses": 4545
+      },
+      {
+        "name": "Marshall, Kristine",
+        "position": "Councillor",
+        "remuneration": 18694,
+        "expenses": 696
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "North Vancouver (City)",
+    "councillors": [
+      {
+        "name": "Buchanan, Linda",
+        "position": "Mayor",
+        "remuneration": 159294,
+        "expenses": 12710
+      },
+      {
+        "name": "Back, Holly",
+        "position": "Councillor",
+        "remuneration": 53658,
+        "expenses": 4571
+      },
+      {
+        "name": "Bell, Don",
+        "position": "Councillor",
+        "remuneration": 53658,
+        "expenses": 4571
+      },
+      {
+        "name": "Girard, Angela",
+        "position": "Councillor",
+        "remuneration": 53658,
+        "expenses": 4571
+      },
+      {
+        "name": "McIlroy, Jessica",
+        "position": "Councillor",
+        "remuneration": 53658,
+        "expenses": 4571
+      },
+      {
+        "name": "Shahriari, Shervin",
+        "position": "Councillor",
+        "remuneration": 53658,
+        "expenses": 3699
+      },
+      {
+        "name": "Valente, Antonio",
+        "position": "Councillor",
+        "remuneration": 53658,
+        "expenses": 4571
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "North Vancouver (District)",
+    "councillors": [
+      {
+        "name": "Little,Mike",
+        "position": "Mayor",
+        "remuneration": 168220,
+        "expenses": 4188
+      },
+      {
+        "name": "Back,Jordan",
+        "position": "Councillor",
+        "remuneration": 70755,
+        "expenses": 6636
+      },
+      {
+        "name": "Forbes,Betty Kathleen",
+        "position": "Councillor",
+        "remuneration": 70755,
+        "expenses": 1415
+      },
+      {
+        "name": "Hanson,James A.",
+        "position": "Councillor",
+        "remuneration": 71127,
+        "expenses": 992
+      },
+      {
+        "name": "Mah,Herman",
+        "position": "Councillor",
+        "remuneration": 71120,
+        "expenses": 1343
+      },
+      {
+        "name": "Muri,Lisa A.",
+        "position": "Councillor",
+        "remuneration": 70624,
+        "expenses": 3639
+      },
+      {
+        "name": "Pope,Catherine",
+        "position": "Councillor",
+        "remuneration": 71127,
+        "expenses": 7044
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Oak Bay",
+    "councillors": [
+      {
+        "name": "Murdoch, Kevin",
+        "position": "Mayor",
+        "remuneration": 62228,
+        "expenses": 10602
+      },
+      {
+        "name": "Appleton, Andrew",
+        "position": "Councillor",
+        "remuneration": 26689,
+        "expenses": 3847
+      },
+      {
+        "name": "Braithwaite, Hazel",
+        "position": "Councillor",
+        "remuneration": 26689,
+        "expenses": 2135
+      },
+      {
+        "name": "Green, Cairine",
+        "position": "Councillor",
+        "remuneration": 26689,
+        "expenses": 0
+      },
+      {
+        "name": "Paterson, Esther",
+        "position": "Councillor",
+        "remuneration": 26689,
+        "expenses": 1999
+      },
+      {
+        "name": "Smart, Caroline",
+        "position": "Councillor",
+        "remuneration": 26689,
+        "expenses": 3363
+      },
+      {
+        "name": "Watson, Lesley",
+        "position": "Councillor",
+        "remuneration": 26689,
+        "expenses": 3256
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Parksville",
+    "councillors": [
+      {
+        "name": "O'Brien, Douglas",
+        "position": "Mayor",
+        "remuneration": 62641,
+        "expenses": 10023
+      },
+      {
+        "name": "Beil, Mary",
+        "position": "Councillor",
+        "remuneration": 36392,
+        "expenses": 9781
+      },
+      {
+        "name": "Fras, Adam",
+        "position": "Councillor",
+        "remuneration": 35838,
+        "expenses": 489
+      },
+      {
+        "name": "Gaur, Amit",
+        "position": "Councillor",
+        "remuneration": 35838,
+        "expenses": 1625
+      },
+      {
+        "name": "Grenz, Joel",
+        "position": "Councillor",
+        "remuneration": 36392,
+        "expenses": 6533
+      },
+      {
+        "name": "Martin, Sylvia",
+        "position": "Councillor",
+        "remuneration": 36946,
+        "expenses": 6657
+      },
+      {
+        "name": "Wood, Sean",
+        "position": "Councillor",
+        "remuneration": 36946,
+        "expenses": 6677
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Penticton",
+    "councillors": [
+      {
+        "name": "Bloomfield, Julius",
+        "position": "Mayor",
+        "remuneration": 86150,
+        "expenses": 15834
+      },
+      {
+        "name": "Boultbee, Amelia",
+        "position": "Councillor",
+        "remuneration": 22404,
+        "expenses": 2424
+      },
+      {
+        "name": "Gilbert, Isaac",
+        "position": "Councillor",
+        "remuneration": 28524,
+        "expenses": 7360
+      },
+      {
+        "name": "Graham, Ryan",
+        "position": "Councillor",
+        "remuneration": 28524,
+        "expenses": 14547
+      },
+      {
+        "name": "Konanz, Helena",
+        "position": "Councillor",
+        "remuneration": 28524,
+        "expenses": 9106
+      },
+      {
+        "name": "Miller, James",
+        "position": "Councillor",
+        "remuneration": 28524,
+        "expenses": 1154
+      },
+      {
+        "name": "Watt, Campbell",
+        "position": "Councillor",
+        "remuneration": 28524,
+        "expenses": 10109
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Pitt Meadows",
+    "councillors": [
+      {
+        "name": "MACDONALD, NICOLE",
+        "position": "Mayor",
+        "remuneration": 115326,
+        "expenses": 4410
+      },
+      {
+        "name": "ELKE, TRACY",
+        "position": "Councillor",
+        "remuneration": 46136,
+        "expenses": 8326
+      },
+      {
+        "name": "EVANS, ALISON",
+        "position": "Councillor",
+        "remuneration": 46136,
+        "expenses": 8641
+      },
+      {
+        "name": "HAYES, MIKE",
+        "position": "Councillor",
+        "remuneration": 46136,
+        "expenses": 8825
+      },
+      {
+        "name": "MANION, MICHAEL",
+        "position": "Councillor",
+        "remuneration": 46136,
+        "expenses": 7152
+      },
+      {
+        "name": "MEACHEN, BOB",
+        "position": "Councillor",
+        "remuneration": 46136,
+        "expenses": 2121
+      },
+      {
+        "name": "O'CONNELL, GWEN",
+        "position": "Councillor",
+        "remuneration": 46136,
+        "expenses": 1418
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Alberni",
+    "councillors": [
+      {
+        "name": "MINIONS, SHARIE",
+        "position": "Mayor",
+        "remuneration": 67438,
+        "expenses": 10290
+      },
+      {
+        "name": "DAME, DUSTIN",
+        "position": "Councillor",
+        "remuneration": 30010,
+        "expenses": 11571
+      },
+      {
+        "name": "DOUGLAS,JOHN",
+        "position": "Councillor",
+        "remuneration": 16563,
+        "expenses": 3476
+      },
+      {
+        "name": "HAGGARD, DEBBIE",
+        "position": "Councillor",
+        "remuneration": 30010,
+        "expenses": 10895
+      },
+      {
+        "name": "MEALEY,CHARLES",
+        "position": "Councillor",
+        "remuneration": 30010,
+        "expenses": 2082
+      },
+      {
+        "name": "PATOLA, TODD",
+        "position": "Councillor",
+        "remuneration": 30010,
+        "expenses": 11321
+      },
+      {
+        "name": "SOLDA, CINDY",
+        "position": "Councillor",
+        "remuneration": 30010,
+        "expenses": 7689
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Coquitlam",
+    "councillors": [
+      {
+        "name": "West, Brad",
+        "position": "Mayor",
+        "remuneration": 163472,
+        "expenses": 30680
+      },
+      {
+        "name": "Darling, Steve",
+        "position": "Councillor",
+        "remuneration": 56756,
+        "expenses": 5837
+      },
+      {
+        "name": "McCurrach, Nancy",
+        "position": "Councillor",
+        "remuneration": 56756,
+        "expenses": 5837
+      },
+      {
+        "name": "Penner, Darrell",
+        "position": "Councillor",
+        "remuneration": 56756,
+        "expenses": 5837
+      },
+      {
+        "name": "Petriw, Paige",
+        "position": "Councillor",
+        "remuneration": 56756,
+        "expenses": 5837
+      },
+      {
+        "name": "Pollock, Glenn",
+        "position": "Councillor",
+        "remuneration": 56756,
+        "expenses": 5837
+      },
+      {
+        "name": "Washington, Dean",
+        "position": "Councillor",
+        "remuneration": 56756,
+        "expenses": 5837
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Port Moody",
+    "councillors": [
+      {
+        "name": "Lahti, Meghan",
+        "position": "Mayor",
+        "remuneration": 148335,
+        "expenses": 951
+      },
+      {
+        "name": "Agtarap, Samantha",
+        "position": "Councillor",
+        "remuneration": 57324,
+        "expenses": 466
+      },
+      {
+        "name": "Dilworth, Diana",
+        "position": "Councillor",
+        "remuneration": 57324,
+        "expenses": 466
+      },
+      {
+        "name": "Knowles, Kyla",
+        "position": "Councillor",
+        "remuneration": 57324,
+        "expenses": 466
+      },
+      {
+        "name": "Lubik, Amy",
+        "position": "Councillor",
+        "remuneration": 57324,
+        "expenses": 466
+      },
+      {
+        "name": "Lurbiecki, Haven",
+        "position": "Councillor",
+        "remuneration": 57324,
+        "expenses": 466
+      },
+      {
+        "name": "Morrison, Callan",
+        "position": "Councillor",
+        "remuneration": 57324,
+        "expenses": 466
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Powell River",
+    "councillors": [
+      {
+        "name": "Woznow, Ron",
+        "position": "Mayor",
+        "remuneration": 60600,
+        "expenses": 0
+      },
+      {
+        "name": "Doubt, George",
+        "position": "Councillor",
+        "remuneration": 31800,
+        "expenses": 6938
+      },
+      {
+        "name": "Elliott, Cindy",
+        "position": "Councillor",
+        "remuneration": 31800,
+        "expenses": 6497
+      },
+      {
+        "name": "Palm, James",
+        "position": "Councillor",
+        "remuneration": 31800,
+        "expenses": 375
+      },
+      {
+        "name": "Southcott, Robert",
+        "position": "Councillor",
+        "remuneration": 31800,
+        "expenses": 4946
+      },
+      {
+        "name": "Isakson, Trina",
+        "position": "Councillor",
+        "remuneration": 31800,
+        "expenses": 8143
+      },
+      {
+        "name": "Almeida, Earl",
+        "position": "Councillor",
+        "remuneration": 31800,
+        "expenses": 8385
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Prince George",
+    "councillors": [
+      {
+        "name": "Yu, Simon",
+        "position": "Mayor",
+        "remuneration": 149068,
+        "expenses": 12779
+      },
+      {
+        "name": "Bennett, Tim",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 4529
+      },
+      {
+        "name": "Frizzell, Garth, A",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 1729
+      },
+      {
+        "name": "Klassen, Trudy",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 8247
+      },
+      {
+        "name": "Polillo, Ron",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 6731
+      },
+      {
+        "name": "Ramsay, Cori",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 5801
+      },
+      {
+        "name": "Sampson, Kyle",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 6309
+      },
+      {
+        "name": "Scott, Susan",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 3669
+      },
+      {
+        "name": "Skakun, Brian",
+        "position": "Councillor",
+        "remuneration": 42678,
+        "expenses": 4662
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Prince Rupert",
+    "councillors": [
+      {
+        "name": "POND, HERBERT",
+        "position": "Mayor",
+        "remuneration": 93812,
+        "expenses": 37053
+      },
+      {
+        "name": "ADEY, NICHOLAS",
+        "position": "Councillor",
+        "remuneration": 23453,
+        "expenses": 6043
+      },
+      {
+        "name": "CUNNINGHAM, BARRY",
+        "position": "Councillor",
+        "remuneration": 23453,
+        "expenses": 6932
+      },
+      {
+        "name": "FORSTER, TERESA",
+        "position": "Councillor",
+        "remuneration": 23453,
+        "expenses": 5338
+      },
+      {
+        "name": "NIESH, WADE",
+        "position": "Councillor",
+        "remuneration": 23453,
+        "expenses": 3334
+      },
+      {
+        "name": "RANDHAWA, GURVINDER",
+        "position": "Councillor",
+        "remuneration": 23453,
+        "expenses": 4315
+      },
+      {
+        "name": "SKELTON-MORVEN, REID",
+        "position": "Councillor",
+        "remuneration": 23453,
+        "expenses": 8339
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Quesnel",
+    "councillors": [
+      {
+        "name": "Paull Ronald",
+        "position": "Mayor",
+        "remuneration": 66669,
+        "expenses": 6690
+      },
+      {
+        "name": "Elliott Scott",
+        "position": "Councillor",
+        "remuneration": 22836,
+        "expenses": 3792
+      },
+      {
+        "name": "Goulet Tony",
+        "position": "Councillor",
+        "remuneration": 21686,
+        "expenses": 4390
+      },
+      {
+        "name": "McKelvie Debra",
+        "position": "Councillor",
+        "remuneration": 21686,
+        "expenses": 0
+      },
+      {
+        "name": "Roodenburg Laurey-Anne",
+        "position": "Councillor",
+        "remuneration": 22836,
+        "expenses": 6484
+      },
+      {
+        "name": "Runge Martin",
+        "position": "Councillor",
+        "remuneration": 23436,
+        "expenses": 3881
+      },
+      {
+        "name": "Vik Mitch",
+        "position": "Councillor",
+        "remuneration": 23486,
+        "expenses": 3990
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Salmon Arm",
+    "councillors": [
+      {
+        "name": "Harrison, Alan",
+        "position": "Mayor",
+        "remuneration": 77595,
+        "expenses": 8446
+      },
+      {
+        "name": "Cannon, Debbie",
+        "position": "Councillor",
+        "remuneration": 29948,
+        "expenses": 7398
+      },
+      {
+        "name": "Flynn, Kevin",
+        "position": "Councillor",
+        "remuneration": 29742,
+        "expenses": 5695
+      },
+      {
+        "name": "Gonnella, James",
+        "position": "Councillor",
+        "remuneration": 29948,
+        "expenses": 5584
+      },
+      {
+        "name": "Lavery, Timothy",
+        "position": "Councillor",
+        "remuneration": 29948,
+        "expenses": 290
+      },
+      {
+        "name": "Lindgren, Sylvia",
+        "position": "Councillor",
+        "remuneration": 29894,
+        "expenses": 7323
+      },
+      {
+        "name": "Wallace-Richmond, Louise",
+        "position": "Councillor",
+        "remuneration": 29948,
+        "expenses": 21023
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Sechelt",
+    "councillors": [
+      {
+        "name": "Henderson, John",
+        "position": "Mayor",
+        "remuneration": 50961,
+        "expenses": 11171
+      },
+      {
+        "name": "Bell, Donna",
+        "position": "Councillor",
+        "remuneration": 25481,
+        "expenses": 9162
+      },
+      {
+        "name": "Inkster, Darren",
+        "position": "Councillor",
+        "remuneration": 27323,
+        "expenses": 5574
+      },
+      {
+        "name": "McLauchlan, Dianne",
+        "position": "Councillor",
+        "remuneration": 25481,
+        "expenses": 9570
+      },
+      {
+        "name": "Rowe, Brenda",
+        "position": "Councillor",
+        "remuneration": 29872,
+        "expenses": 6146
+      },
+      {
+        "name": "Shepherd, Adam",
+        "position": "Councillor",
+        "remuneration": 25481,
+        "expenses": 7172
+      },
+      {
+        "name": "Toth, Alton",
+        "position": "Councillor",
+        "remuneration": 25481,
+        "expenses": 7952
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Sidney",
+    "councillors": [
+      {
+        "name": "McNeil-Smith, Cliff",
+        "position": "Mayor",
+        "remuneration": 45122,
+        "expenses": 0
+      },
+      {
+        "name": "Duck, Stephen",
+        "position": "Councillor",
+        "remuneration": 18023,
+        "expenses": 1456
+      },
+      {
+        "name": "Duncan, Sara",
+        "position": "Councillor",
+        "remuneration": 18023,
+        "expenses": 2269
+      },
+      {
+        "name": "Garnett, Scott",
+        "position": "Councillor",
+        "remuneration": 18023,
+        "expenses": 0
+      },
+      {
+        "name": "Novek, Richard",
+        "position": "Councillor",
+        "remuneration": 18023,
+        "expenses": 2824
+      },
+      {
+        "name": "O'Keeffe, Terri",
+        "position": "Councillor",
+        "remuneration": 18023,
+        "expenses": 1511
+      },
+      {
+        "name": "Rintoul, Chad",
+        "position": "Councillor",
+        "remuneration": 18023,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Squamish",
+    "councillors": [
+      {
+        "name": "Armand Hurford",
+        "position": "Mayor",
+        "remuneration": 100945,
+        "expenses": 11188
+      },
+      {
+        "name": "Eric Andersen",
+        "position": "Councillor",
+        "remuneration": 42614,
+        "expenses": 3802
+      },
+      {
+        "name": "John French",
+        "position": "Councillor",
+        "remuneration": 47082,
+        "expenses": 4480
+      },
+      {
+        "name": "Lauren Greenlaw",
+        "position": "Councillor",
+        "remuneration": 45593,
+        "expenses": 4274
+      },
+      {
+        "name": "Andrew Hamilton",
+        "position": "Councillor",
+        "remuneration": 45593,
+        "expenses": 4106
+      },
+      {
+        "name": "Chris Pettingill",
+        "position": "Councillor",
+        "remuneration": 47082,
+        "expenses": 4576
+      },
+      {
+        "name": "Jenna Stoner",
+        "position": "Councillor",
+        "remuneration": 45593,
+        "expenses": 4936
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Summerland",
+    "councillors": [
+      {
+        "name": "Douglas Holmes",
+        "position": "Mayor",
+        "remuneration": 39674,
+        "expenses": 9632
+      },
+      {
+        "name": "Erin Trainer",
+        "position": "Councillor",
+        "remuneration": 25053,
+        "expenses": 6235
+      },
+      {
+        "name": "Richard Barkwill",
+        "position": "Councillor",
+        "remuneration": 17853,
+        "expenses": 6524
+      },
+      {
+        "name": "Adrienne Betts",
+        "position": "Councillor",
+        "remuneration": 17883,
+        "expenses": 5392
+      },
+      {
+        "name": "Doug Patan",
+        "position": "Councillor",
+        "remuneration": 17853,
+        "expenses": 0
+      },
+      {
+        "name": "Janet Peake",
+        "position": "Councillor",
+        "remuneration": 17853,
+        "expenses": 5453
+      },
+      {
+        "name": "Martin Van Alphen",
+        "position": "Councillor",
+        "remuneration": 17853,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Terrace",
+    "councillors": [
+      {
+        "name": "Sean Bujtas",
+        "position": "Mayor",
+        "remuneration": 47535,
+        "expenses": 16475
+      },
+      {
+        "name": "Christopher Apps",
+        "position": "Councillor",
+        "remuneration": 22417,
+        "expenses": 5688
+      },
+      {
+        "name": "James Cordeiro",
+        "position": "Councillor",
+        "remuneration": 22417,
+        "expenses": 507
+      },
+      {
+        "name": "Inder Dhillon",
+        "position": "Councillor",
+        "remuneration": 22417,
+        "expenses": 5237
+      },
+      {
+        "name": "Brian Downie",
+        "position": "Councillor",
+        "remuneration": 22417,
+        "expenses": 13318
+      },
+      {
+        "name": "David Gordon",
+        "position": "Councillor",
+        "remuneration": 22417,
+        "expenses": 779
+      },
+      {
+        "name": "Sarah Zimmerman",
+        "position": "Councillor",
+        "remuneration": 22417,
+        "expenses": 5659
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Victoria",
+    "councillors": [
+      {
+        "name": "Alto, Marianne",
+        "position": "Mayor",
+        "remuneration": 130620,
+        "expenses": 16118
+      },
+      {
+        "name": "Caradonna, Jeremy",
+        "position": "Councillor",
+        "remuneration": 54826,
+        "expenses": 2586
+      },
+      {
+        "name": "Coleman, Christopher",
+        "position": "Councillor",
+        "remuneration": 54826,
+        "expenses": 8412
+      },
+      {
+        "name": "Dell, Matt",
+        "position": "Councillor",
+        "remuneration": 54826,
+        "expenses": 2629
+      },
+      {
+        "name": "Gardiner, Marg",
+        "position": "Councillor",
+        "remuneration": 54826,
+        "expenses": 10173
+      },
+      {
+        "name": "Hammond, Stephen",
+        "position": "Councillor",
+        "remuneration": 54826,
+        "expenses": 3018
+      },
+      {
+        "name": "Kim, Susan",
+        "position": "Councillor",
+        "remuneration": 54826,
+        "expenses": 4829
+      },
+      {
+        "name": "Loughton, Krista",
+        "position": "Councillor",
+        "remuneration": 56576,
+        "expenses": 4728
+      },
+      {
+        "name": "Thompson, Dave",
+        "position": "Councillor",
+        "remuneration": 56576,
+        "expenses": 3269
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "View Royal",
+    "councillors": [
+      {
+        "name": "Tobias, Sid",
+        "position": "Mayor",
+        "remuneration": 49573,
+        "expenses": 868
+      },
+      {
+        "name": "Brown, Donald",
+        "position": "Councillor",
+        "remuneration": 24786,
+        "expenses": 257
+      },
+      {
+        "name": "Kowalewich, Damian",
+        "position": "Councillor",
+        "remuneration": 24786,
+        "expenses": 218
+      },
+      {
+        "name": "Lemon, Margaret",
+        "position": "Councillor",
+        "remuneration": 24786,
+        "expenses": 4231
+      },
+      {
+        "name": "MacKenzie, Alison",
+        "position": "Councillor",
+        "remuneration": 24786,
+        "expenses": 4579
+      },
+      {
+        "name": "Mattson, Ron",
+        "position": "Councillor",
+        "remuneration": 24786,
+        "expenses": 113
+      },
+      {
+        "name": "Rogers, John",
+        "position": "Councillor",
+        "remuneration": 24786,
+        "expenses": 2864
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "West Kelowna",
+    "councillors": [
+      {
+        "name": "MILSOM, GORD",
+        "position": "Mayor",
+        "remuneration": 91549,
+        "expenses": 15441
+      },
+      {
+        "name": "DA SILVA, TASHA",
+        "position": "Councillor",
+        "remuneration": 32042,
+        "expenses": 11006
+      },
+      {
+        "name": "DEJONG, RICK",
+        "position": "Councillor",
+        "remuneration": 32042,
+        "expenses": 10891
+      },
+      {
+        "name": "FRIESEN, JASON",
+        "position": "Councillor",
+        "remuneration": 32042,
+        "expenses": 11376
+      },
+      {
+        "name": "JOHNSTON, STEPHEN",
+        "position": "Councillor",
+        "remuneration": 32042,
+        "expenses": 6550
+      },
+      {
+        "name": "MILLSAP, GARRETT",
+        "position": "Councillor",
+        "remuneration": 32042,
+        "expenses": 6140
+      },
+      {
+        "name": "ZANON, CAROL",
+        "position": "Councillor",
+        "remuneration": 32042,
+        "expenses": 11644
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "West Vancouver",
+    "councillors": [
+      {
+        "name": "Sager, M",
+        "position": "Mayor",
+        "remuneration": 148633,
+        "expenses": 0
+      },
+      {
+        "name": "Cassidy, C",
+        "position": "Councillor",
+        "remuneration": 61517,
+        "expenses": 0
+      },
+      {
+        "name": "Gambioli, N",
+        "position": "Councillor",
+        "remuneration": 65043,
+        "expenses": 0
+      },
+      {
+        "name": "Lambur, P",
+        "position": "Councillor",
+        "remuneration": 57992,
+        "expenses": 0
+      },
+      {
+        "name": "Snider, S",
+        "position": "Councillor",
+        "remuneration": 61517,
+        "expenses": 0
+      },
+      {
+        "name": "Thompson, S",
+        "position": "Councillor",
+        "remuneration": 61517,
+        "expenses": 0
+      },
+      {
+        "name": "Watt, L",
+        "position": "Councillor",
+        "remuneration": 61517,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Whistler",
+    "councillors": [
+      {
+        "name": "CROMPTON, J.",
+        "position": "Mayor",
+        "remuneration": 145918,
+        "expenses": 0
+      },
+      {
+        "name": "DE JONG, A.",
+        "position": "Councillor",
+        "remuneration": 55239,
+        "expenses": 0
+      },
+      {
+        "name": "FORD, J.",
+        "position": "Councillor",
+        "remuneration": 55239,
+        "expenses": 0
+      },
+      {
+        "name": "FORSYTH, R.",
+        "position": "Councillor",
+        "remuneration": 55239,
+        "expenses": 0
+      },
+      {
+        "name": "JEWETT, C.",
+        "position": "Councillor",
+        "remuneration": 55239,
+        "expenses": 0
+      },
+      {
+        "name": "MORDEN, J.",
+        "position": "Councillor",
+        "remuneration": 55239,
+        "expenses": 0
+      },
+      {
+        "name": "MURL, J.",
+        "position": "Councillor",
+        "remuneration": 55239,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "White Rock",
+    "councillors": [
+      {
+        "name": "Knight, Megan Sage",
+        "position": "Mayor",
+        "remuneration": 129697,
+        "expenses": 0
+      },
+      {
+        "name": "Ansell-Sands, Michele",
+        "position": "Councillor",
+        "remuneration": 56205,
+        "expenses": 0
+      },
+      {
+        "name": "Chesney, David Joseph",
+        "position": "Councillor",
+        "remuneration": 56205,
+        "expenses": 0
+      },
+      {
+        "name": "Cheung, Elaine",
+        "position": "Councillor",
+        "remuneration": 56205,
+        "expenses": 0
+      },
+      {
+        "name": "Klassen, Ernie",
+        "position": "Councillor",
+        "remuneration": 56205,
+        "expenses": 0
+      },
+      {
+        "name": "Lawrence, William",
+        "position": "Councillor",
+        "remuneration": 56205,
+        "expenses": 0
+      },
+      {
+        "name": "Trevelyan, Christopher",
+        "position": "Councillor",
+        "remuneration": 56205,
+        "expenses": 0
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Williams Lake",
+    "councillors": [
+      {
+        "name": "Rathor, S.",
+        "position": "Mayor",
+        "remuneration": 67522,
+        "expenses": 12392
+      },
+      {
+        "name": "Boehm, S.",
+        "position": "Councillor",
+        "remuneration": 24711,
+        "expenses": 7959
+      },
+      {
+        "name": "Delainey, A.",
+        "position": "Councillor",
+        "remuneration": 24711,
+        "expenses": 1261
+      },
+      {
+        "name": "Flaspohler, J.",
+        "position": "Councillor",
+        "remuneration": 24711,
+        "expenses": 4066
+      },
+      {
+        "name": "Lyons, J.",
+        "position": "Councillor",
+        "remuneration": 24711,
+        "expenses": 5441
+      },
+      {
+        "name": "Moses, M.",
+        "position": "Councillor",
+        "remuneration": 21767,
+        "expenses": 5195
+      },
+      {
+        "name": "Nelson, S.",
+        "position": "Councillor",
+        "remuneration": 24711,
+        "expenses": 4198
+      }
+    ]
+  }
+]

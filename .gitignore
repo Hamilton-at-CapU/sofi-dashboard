@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environments
+.env
+.envrc
+.venv
+env/
+venv/
+ENV/
+
+# UV
+#uv.lock
+
+# Raw data (download separately)
+data_prep/raw_data/
+
+# Ruff
+.ruff_cache/
+
+# mypy
+.mypy_cache/
+
+# pytest
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+# VS Code
+# .vscode/
+
+# Cursor
+.cursorignore
+.cursorindexingignore
+
+# macOS
+.DS_Store
