@@ -337,7 +337,7 @@ with ui.sidebar():
         )
     ui.hr(),
     ui.markdown(
-        "Data extracted from remuneration schedules in SOFI reports.  [View remuneration schedules](remuneration_schedules_2024.pdf)"
+        "Data extracted from remuneration schedules in SOFI reports.  [View remuneration schedules](https://raw.githubusercontent.com/Hamilton-at-CapU/sofi-dashboard/blob/main/app/remuneration_schedules_2024.pdf)"
         ),
     ui.markdown(
         "Not all municipalities are included.  If you would like a specific municipality included, please send me an email."
