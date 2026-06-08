@@ -284,7 +284,7 @@ def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix=""):
 # Layout
 # ---------------------------------------------------------------------------
 
-ui.page_opts(title="Council Pay Dashboard", fillable=False, static_assets=Path(__file__).parent)
+ui.page_opts(title="Council Pay Dashboard", fillable=False)
 
 with ui.sidebar():
 
@@ -337,7 +337,7 @@ with ui.sidebar():
         )
     ui.hr(),
     ui.markdown(
-        "Data extracted from remuneration schedules in SOFI reports.  [View remuneration schedules](https://raw.githubusercontent.com/Hamilton-at-CapU/sofi-dashboard/blob/main/app/remuneration_schedules_2024.pdf)"
+        "Data extracted from remuneration schedules in SOFI reports.  [View remuneration schedules](https://raw.githubusercontent.com/Hamilton-at-CapU/sofi-dashboard/main/app/remuneration_schedules_2024.pdf)"
         ),
     ui.markdown(
         "Not all municipalities are included.  If you would like a specific municipality included, please send me an email."
