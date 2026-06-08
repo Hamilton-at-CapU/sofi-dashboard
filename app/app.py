@@ -284,7 +284,7 @@ def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix=""):
 # Layout
 # ---------------------------------------------------------------------------
 
-ui.page_opts(title="Council Pay Dashboard", fillable=False)
+ui.page_opts(title="Council Pay Dashboard", fillable=False, static_assets=Path(__file__).parent)
 
 with ui.sidebar():
 
