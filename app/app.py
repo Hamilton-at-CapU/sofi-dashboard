@@ -27,6 +27,7 @@ def load_remuneration_data(path=None):
                 "position":     person["position"],
                 "remuneration": person["remuneration"],
                 "expenses":     person["expenses"],
+                "benefits":     person.get("benefits"),
             })
     return pd.DataFrame(rows)
 
@@ -56,6 +57,27 @@ councillor_to_mayor_df = (
     )
     .assign(ratio=lambda d: d["avg_councillor"] / d["mayor_remuneration"] * 100)
     .dropna(subset=["ratio"])
+)
+
+mayor_expenses_df = mayor_df[["municipality", "expenses"]].dropna().copy()
+
+councillor_avg_expenses_df = (
+    plot_df[plot_df["position"] != "Mayor"]
+    .groupby("municipality", as_index=False)["expenses"]
+    .mean()
+)
+
+mayor_benefits_df = (
+    mayor_df[["municipality", "benefits"]]
+    .dropna(subset=["benefits"])
+    .copy()
+)
+
+councillor_avg_benefits_df = (
+    plot_df[plot_df["position"] != "Mayor"]
+    .groupby("municipality", as_index=False)["benefits"]
+    .mean()
+    .dropna(subset=["benefits"])
 )
 
 # ---------------------------------------------------------------------------
@@ -129,9 +151,13 @@ PTAX_MIN = int(_ptax.min() // 500     * 500)
 PTAX_MAX = int((_ptax.max() + 499)    // 500     * 500)
 
 VIEW_CHOICES = {
-    "mayor":   "Mayor Remuneration",
-    "council": "Councillor Remuneration",
-    "ratio":   "Councillor / Mayor Ratio",
+    "mayor":       "Mayor Remuneration",
+    "council":     "Councillor Remuneration",
+    "ratio":       "Councillor / Mayor Ratio",
+    "mayor_exp":   "Mayor Expenses",
+    "council_exp": "Councillor Expenses",
+    "mayor_ben":   "Mayor Benefits",
+    "council_ben": "Councillor Benefits",
 }
 
 
@@ -289,6 +315,7 @@ ui.page_opts(title="Council Pay Dashboard", fillable=False)
 with ui.sidebar():
 
     ui.markdown("Compare mayor and councillor remuneration across BC municipalities.")
+    ui.markdown("(Not all municipalities are included.  If you would like a specific municipality included, please send me an email.)")
     ui.hr()
 
     ui.h6("Selected Municipalities")
@@ -338,9 +365,6 @@ with ui.sidebar():
     ui.hr(),
     ui.markdown(
         "Data extracted from remuneration schedules in SOFI reports.  [View remuneration schedules](https://raw.githubusercontent.com/Hamilton-at-CapU/sofi-dashboard/main/app/remuneration_schedules_2024.pdf)"
-        ),
-    ui.markdown(
-        "Not all municipalities are included.  If you would like a specific municipality included, please send me an email."
         ),
     ui.markdown(
         "Dashboard by Andrew Hamilton, [Computing & Data Science at Capilano University](https://www.capilanou.ca/programs--courses/search--select/explore-our-areas-of-study/arts--sciences/school-of-science-technology-engineering--mathematics-stem/computing--data-science-department/).  "
@@ -403,10 +427,26 @@ with ui.navset_tab():
                         sel_vals = councillor_avg_df[councillor_avg_df["municipality"].isin(munis)]["remuneration"].dropna()
                         title    = f"Distribution of Average Councillor Remuneration by Municipality ({YEAR})"
                         def fmt_val(v): return f"${v:,.0f}"
-                    else:
+                    elif view == "ratio":
                         sel_vals = councillor_to_mayor_df[councillor_to_mayor_df["municipality"].isin(munis)]["ratio"].dropna()
                         title    = f"Average Councillor Remuneration as % of Mayor Remuneration ({YEAR})"
                         def fmt_val(v): return f"{v:.1f}%"
+                    elif view == "mayor_exp":
+                        sel_vals = mayor_expenses_df[mayor_expenses_df["municipality"].isin(munis)]["expenses"].dropna()
+                        title    = f"Distribution of Mayor Expenses ({YEAR})"
+                        def fmt_val(v): return f"${v:,.0f}"
+                    elif view == "council_exp":
+                        sel_vals = councillor_avg_expenses_df[councillor_avg_expenses_df["municipality"].isin(munis)]["expenses"].dropna()
+                        title    = f"Distribution of Average Councillor Expenses by Municipality ({YEAR})"
+                        def fmt_val(v): return f"${v:,.0f}"
+                    elif view == "mayor_ben":
+                        sel_vals = mayor_benefits_df[mayor_benefits_df["municipality"].isin(munis)]["benefits"].dropna()
+                        title    = f"Distribution of Mayor Benefits ({YEAR})"
+                        def fmt_val(v): return f"${v:,.0f}"
+                    else:
+                        sel_vals = councillor_avg_benefits_df[councillor_avg_benefits_df["municipality"].isin(munis)]["benefits"].dropna()
+                        title    = f"Distribution of Average Councillor Benefits by Municipality ({YEAR})"
+                        def fmt_val(v): return f"${v:,.0f}"
 
                     sel_avg = sel_vals.mean() if not sel_vals.empty else float("nan")
 
@@ -426,9 +466,13 @@ with ui.navset_tab():
             @render.ui
             def card_footer_content():
                 footers = {
-                    "mayor":   "Density distribution includes all municipalities with available data.",
-                    "council": "Each point represents the average remuneration across all councillors (excluding mayor) for that municipality.",
-                    "ratio":   "Each point is a municipality's mean councillor pay divided by its mayor's pay, expressed as a percentage.",
+                    "mayor":       "Density distribution includes all municipalities with available data.",
+                    "council":     "Each point represents the average remuneration across all councillors (excluding mayor) for that municipality.",
+                    "ratio":       "Each point is a municipality's mean councillor pay divided by its mayor's pay, expressed as a percentage.",
+                    "mayor_exp":   "Density distribution of mayor expenses across all municipalities with available data.",
+                    "council_exp": "Each point represents the average expenses across all councillors (excluding mayor) for that municipality.",
+                    "mayor_ben":   "Density distribution of mayor benefits across municipalities with available data. Not all municipalities provide benefits.",
+                    "council_ben": "Each point represents the average benefits across all councillors (excluding mayor) for that municipality. Not all municipalities provide benefits.",
                 }
                 return ui.card_footer(footers[input.view()])
 
@@ -453,13 +497,45 @@ with ui.navset_tab():
                         tick_fmt="$,.0f", tick_suffix="",
                         label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
                     )
-                else:
+                elif view == "ratio":
                     data = councillor_to_mayor_df.dropna(subset=["ratio"])
                     return _build_fig(
                         data, "ratio", munis,
                         x_title=f"Avg Councillor Remuneration as % of Mayor ({YEAR})",
                         tick_fmt=".1f", tick_suffix="%",
                         label_fn=lambda v, p: f"{v:.1f}%, {p:.0f}th pct",
+                    )
+                elif view == "mayor_exp":
+                    data = mayor_expenses_df.dropna(subset=["expenses"])
+                    return _build_fig(
+                        data, "expenses", munis,
+                        x_title=f"Mayor Expenses ({YEAR})",
+                        tick_fmt="$,.0f", tick_suffix="",
+                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
+                    )
+                elif view == "council_exp":
+                    data = councillor_avg_expenses_df.dropna(subset=["expenses"])
+                    return _build_fig(
+                        data, "expenses", munis,
+                        x_title=f"Average Councillor Expenses ({YEAR})",
+                        tick_fmt="$,.0f", tick_suffix="",
+                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
+                    )
+                elif view == "mayor_ben":
+                    data = mayor_benefits_df.dropna(subset=["benefits"])
+                    return _build_fig(
+                        data, "benefits", munis,
+                        x_title=f"Mayor Benefits ({YEAR})",
+                        tick_fmt="$,.0f", tick_suffix="",
+                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
+                    )
+                else:
+                    data = councillor_avg_benefits_df.dropna(subset=["benefits"])
+                    return _build_fig(
+                        data, "benefits", munis,
+                        x_title=f"Average Councillor Benefits ({YEAR})",
+                        tick_fmt="$,.0f", tick_suffix="",
+                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
                     )
 
     # ── Trends tab ──────────────────────────────────────────────────────────

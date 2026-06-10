@@ -1,31 +1,10 @@
-"""
-Extract elected official remuneration and expenses from 2024 SOFI PDFs.
-
-Strategy: split each line at the position keyword (Mayor / Councillor / etc.)
-rather than relying on column spacing, which pdfplumber normalises to single spaces.
-"""
-
 import re
-import pdfplumber
-import pandas as pd
 from pathlib import Path
-from data_prep.page_indices_2024 import PAGE_INDICES_2024
+
+import pandas as pd
+import pdfplumber
 
 YEAR = 2024
-
-# ...existing code...
-
-IMAGE_MUNIS = {
-    "Campbell River",
-    "Coldstream",
-    "Colwood",
-    "Mission",
-    "North Saanich",
-    "Penticton",
-    "Port Coquitlam",
-    "Squamish",
-    "Terrace",
-}
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -164,8 +143,20 @@ NORTH_COWICHAN_RE = re.compile(
     r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)"
     r"\s+(Mayor|Councillors?)\s+"
     r"\$?\s*(\d[\d,\.]+)"     # remuneration
-    r"\s+\$?\s*(\d[\d,\.]+)"  # benefits (skip)
+    r"\s+\$?\s*(\d[\d,\.]+)"  # benefits
     r"\s+\$?\s*(\d[\d,\.]+|-)",  # expenses
+    re.MULTILINE | re.IGNORECASE,
+)
+
+# Coquitlam: Name  Position  Remuneration  Taxable Benefits  Expenses
+COQUITLAM_RE = re.compile(
+    r"^([\w\u00C0-\u024F',\.\-\(\)][\w\u00C0-\u024F',\.\-\(\)\ ]+?)"
+    r"\ +"
+    r"(City Mayor|City Councillor|Mayor|Deputy Mayor|Councillors?|Council\b)"
+    r"\ +"
+    r"(" + _NUM + r")"      # remuneration
+    r"\ +(" + _NUM + r"|-)" # taxable benefits
+    r"\ +(" + _NUM + r"|-)", # expenses
     re.MULTILINE | re.IGNORECASE,
 )
 
@@ -202,7 +193,8 @@ def parse_standard(text: str) -> list[dict]:
         exp = exp_raw if (exp_raw is not None and exp_raw < 500_000) else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": None})
     return rows
 
 
@@ -216,7 +208,8 @@ def parse_position_first(text: str) -> list[dict]:
         exp = clean_amount(m.group(4)) if m.group(4) else 0
         if rem and rem > 5_000:
             rows.append({"name": m.group(2).strip(), "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": None})
     return rows
 
 
@@ -237,7 +230,7 @@ def parse_delta(text: str) -> list[dict]:
             r"\s+(\d[\d,]+)"    # car allowance (col 2, skip)
             r"\s+(\d[\d,]+)"    # total (col 3, skip)
             r"\s+(\d[\d,]+|-)"  # expenses (col 4)
-            r"\s+(\d[\d,]+|-)", # benefits (col 5, skip)
+            r"\s+(\d[\d,]+|-)", # benefits (col 5)
             line.strip(), re.IGNORECASE
         )
         if not m:
@@ -250,9 +243,11 @@ def parse_delta(text: str) -> list[dict]:
             continue
         rem = clean_amount(m.group(3))
         exp = clean_amount(m.group(6)) or 0
+        ben = clean_amount(m.group(7)) if m.group(7) and m.group(7).strip() != "-" else None
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp})
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
     return rows
 
 
@@ -277,7 +272,8 @@ def parse_oak_bay(text: str) -> list[dict]:
         exp = clean_amount(m.group(3)) if m.group(3) else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": None,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": None})
     if not rows:
         return rows
     max_rem = max(r["remuneration"] for r in rows)
@@ -297,7 +293,7 @@ def parse_pitt_meadows(text: str) -> list[dict]:
             r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
             r"(MAYOR|COUNCILLOR)\s+"
             r"(\d[\d,]+)"       # salary (remuneration)
-            r"\s+(\d[\d,]+)"    # other (skip)
+            r"\s+(\d[\d,]+)"    # benefits/other
             r"\s+(\d[\d,]+)",   # expenses
             line, re.IGNORECASE
         )
@@ -310,10 +306,12 @@ def parse_pitt_meadows(text: str) -> list[dict]:
         if not is_valid_name(name):
             continue
         rem = clean_amount(m.group(3))
+        ben = clean_amount(m.group(4))
         exp = clean_amount(m.group(5)) or 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp})
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
     return rows
 
 
@@ -331,10 +329,12 @@ def parse_north_cowichan(text: str) -> list[dict]:
         if not is_valid_name(name):
             continue
         rem = clean_amount(m.group(3))
+        ben = clean_amount(m.group(4)) if m.group(4) else None
         exp = clean_amount(m.group(5)) if m.group(5) else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": ben})
     return rows
 
 
@@ -359,23 +359,24 @@ def parse_prince_george(text: str) -> list[dict]:
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
                          "remuneration": (rem or 0) + (allowance or 0),
-                         "expenses": exp or 0})
+                         "expenses": exp or 0,
+                         "benefits": None})
     return rows
 
 
 def parse_kamloops(text: str) -> list[dict]:
     """Name  Position  Remuneration  Taxable benefits  Total  [Council Rep]  Expenses
-    Takes col 1 (remuneration) and last col (expenses)."""
+    Benefits extraction skipped — PDF layout produces incorrect values."""
     rows = []
     for line in text.splitlines():
         m = re.match(
             r"^([\w\u00C0-\u024F',\.\-\(\)][\w\u00C0-\u024F',\.\-\(\)\s]+?)\s+"
             r"(Mayor|Council)\s+"
-            r"\$?\s*(\d[\d,]+)"
-            r"(?:\s+\$?\s*[\d,]+)?"
-            r"(?:\s+\$?\s*[\d,]+)?"
-            r"(?:\s+\$?\s*[\d,]+)?"
-            r"\s+\$?\s*(\d[\d,]*)",
+            r"\$?\s*(\d[\d,]+)"          # remuneration
+            r"(?:\s+\$?\s*[\d,]+)?"      # taxable benefits (skip)
+            r"(?:\s+\$?\s*[\d,]+)?"      # total (skip)
+            r"(?:\s+\$?\s*[\d,]+)?"      # council rep (skip)
+            r"\s+\$?\s*(\d[\d,]*)",      # expenses
             line.strip(), re.IGNORECASE
         )
         if not m:
@@ -390,16 +391,17 @@ def parse_kamloops(text: str) -> list[dict]:
         exp = clean_amount(m.group(4)) if m.group(4) else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": None})
     return rows
 
 
 def parse_coquitlam(text: str) -> list[dict]:
-    """Name  Position  Remuneration  Taxable benefits  Expenses — take cols 1 & 3."""
+    """Name  Position  Remuneration  Taxable Benefits  Expenses — single regex, no tail parsing."""
     # Collapse OCR spaces inside numbers: "8 4,072" -> "84,072"
     text = re.sub(r"(?<!\d)(\d)\s+(\d{1,3},\d{3})", r"\1\2", text)
     rows = []
-    for m in STANDARD_RE.finditer(text):
+    for m in COQUITLAM_RE.finditer(text):
         pos = normalise_position(m.group(2))
         if not pos:
             continue
@@ -407,14 +409,12 @@ def parse_coquitlam(text: str) -> list[dict]:
         if not is_valid_name(name):
             continue
         rem = clean_amount(m.group(3))
-        # group(4) is taxable benefits — skip it; re-parse tail for expenses
-        tail = text[m.end():]
-        first_line = tail.split("\n")[0].strip()
-        exp_match = re.match(r"^\s*\$?\s*(\d[\d,]*)", first_line)
-        exp = clean_amount(exp_match.group(1)) if exp_match else 0
+        ben = clean_amount(m.group(4)) if m.group(4) and m.group(4).strip() != "-" else None
+        exp = clean_amount(m.group(5)) if m.group(5) and m.group(5).strip() != "-" else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": ben})
     return rows
 
 
@@ -436,7 +436,8 @@ def parse_abbotsford(text: str) -> list[dict]:
         exp = clean_amount(match.group(4)) if match.group(4) else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": None})
     return rows
 
 
@@ -484,7 +485,7 @@ def parse_quesnel(text: str) -> list[dict]:
 
 def parse_port_alberni(text: str) -> list[dict]:
     """Name  Elected Official  $ rem  $ taxable benefits  $ expenses
-    OCR spaces in amounts. Highest paid = Mayor. Stop at 'Total:' line."""
+    OCR spaces in amounts. Highest paid = Mayor. Benefits extraction skipped."""
     # Collapse OCR spaces: "3 0,010.33" -> "30,010.33", "9 4.71" -> "94.71"
     text = re.sub(r"(?<=\s)(\d)\s+(\d{1,3},\d{3})", r"\1\2", text)
     text = re.sub(r"(\d)\s+,(\d{3})", r"\1,\2", text)
@@ -513,7 +514,8 @@ def parse_port_alberni(text: str) -> list[dict]:
         exp = clean_amount(m.group(4)) or 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": None,
-                         "remuneration": rem, "expenses": exp})
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
     if not rows:
         return rows
     max_rem = max(r["remuneration"] for r in rows)
@@ -547,7 +549,8 @@ def parse_new_westminster(text: str) -> list[dict]:
         exp = sum(clean_amount(t) or 0 for t in exp_tokens)
         if rem and rem > 5_000:
             rows.append({"name": name, "position": None,
-                         "remuneration": rem, "expenses": exp})
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
     if not rows:
         return rows
     max_rem = max(r["remuneration"] for r in rows)
@@ -584,13 +587,14 @@ def parse_chilliwack(text: str) -> list[dict]:
         rem = bylaw + other
         if rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp})
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
     return rows
 
 
 def parse_burnaby(text: str) -> list[dict]:
-    """Name  Remuneration  Allowances  Expenses -- no position labels.
-    Takes col 1 (remuneration) and col 3 (expenses); highest paid = Mayor."""
+    """Name  Remuneration  Allowances and Benefits  Expenses -- no position labels.
+    Takes col 1 (remuneration), col 2 (benefits), col 3 (expenses); highest paid = Mayor."""
     rows = []
     for line in text.splitlines():
         line = line.strip()
@@ -609,10 +613,12 @@ def parse_burnaby(text: str) -> list[dict]:
         if not is_valid_name(name):
             continue
         rem = clean_amount(m.group(2))
+        ben = clean_amount(m.group(3))
         exp = clean_amount(m.group(4))
         if rem and rem > 5_000:
             rows.append({"name": name, "position": None,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": ben})
     if not rows:
         return rows
     max_rem = max(r["remuneration"] for r in rows)
@@ -682,7 +688,8 @@ def parse_esquimalt(text: str) -> list[dict]:
         exp = clean_amount(m.group(3)) or 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": None,
-                         "remuneration": rem, "expenses": exp})
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
     if not rows:
         return rows
     max_rem = max(r["remuneration"] for r in rows)
@@ -716,7 +723,8 @@ def parse_prince_rupert(text: str) -> list[dict]:
             exp = clean_amount(m_mayor.group(3)) or 0
             if rem and rem > 5_000:
                 rows.append({"name": name, "position": "Mayor",
-                             "remuneration": rem, "expenses": exp})
+                             "remuneration": rem, "expenses": exp,
+                             "benefits": None})
             continue
         # "Councillors NAME ..." — strip the header word and parse as councillor
         line = re.sub(r"^Councillors?\s+", "", line, flags=re.IGNORECASE)
@@ -737,12 +745,13 @@ def parse_prince_rupert(text: str) -> list[dict]:
                 exp = clean_amount(m_coun.group(3)) or 0
                 if rem and rem > 5_000:
                     rows.append({"name": name, "position": "Councillor",
-                                 "remuneration": rem, "expenses": exp})
+                                 "remuneration": rem, "expenses": exp,
+                                 "benefits": None})
     return rows
 
 
 def parse_comox(text: str) -> list[dict]:
-    """Name, Position  rem  exp  — comma after name, line-by-line."""
+    # ...existing code...
     rows = []
     for line in text.splitlines():
         m = re.match(
@@ -764,7 +773,150 @@ def parse_comox(text: str) -> list[dict]:
         exp = clean_amount(m.group(4)) if m.group(4) else 0
         if rem and rem > 5_000:
             rows.append({"name": name, "position": pos,
-                         "remuneration": rem, "expenses": exp or 0})
+                         "remuneration": rem, "expenses": exp or 0,
+                         "benefits": None})
+    return rows
+
+
+def parse_maple_ridge(text: str) -> list[dict]:
+    """Name  Position  Remuneration  Taxable Benefits & Other  Expenses"""
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^(Name|Total|Remuneration|Benefits|Schedule|City|Financial|Statement|Elected|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"(Mayor|Councillors?|Deputy Mayor)\s+"
+            r"(\d[\d,\.]+)"         # remuneration
+            r"\s+(\d[\d,\.]+|-)"    # taxable benefits & other
+            r"\s+(\d[\d,\.]+|-)",   # expenses
+            line, re.IGNORECASE
+        )
+        if not m:
+            continue
+        pos = normalise_position(m.group(2))
+        if not pos:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(3))
+        ben = clean_amount(m.group(4)) if m.group(4) and m.group(4).strip() != "-" else None
+        exp = clean_amount(m.group(5)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
+    return rows
+
+
+def parse_port_coquitlam(text: str) -> list[dict]:
+    """Name  Position  Base  Benefits & Other Compensation  Expenses  Total"""
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^(Name|Total|Benefits|Expenses|The |Schedule|Prepared|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"(Mayor|Councillors?|Deputy Mayor)\s+"
+            r"(\d[\d,]+)"           # base (remuneration)
+            r"\s+(\d[\d,]+|-)"      # benefits & other compensation
+            r"\s+(\d[\d,]+|-)"      # expenses
+            r"(?:\s+\$?\s*[\d,]+)?",# total (skip)
+            line, re.IGNORECASE
+        )
+        if not m:
+            continue
+        pos = normalise_position(m.group(2))
+        if not pos:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(3))
+        ben = clean_amount(m.group(4)) if m.group(4) and m.group(4).strip() != "-" else None
+        exp = clean_amount(m.group(5)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
+    return rows
+
+
+def parse_salmon_arm(text: str) -> list[dict]:
+    """Name  Position  Remuneration  Expenses  Benefit  Total
+    Benefits is the third numeric column (after expenses)."""
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^(Name|Total|Statement|Life|For the|A statement|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"(Mayor|Councillors?)\s+"
+            r"\$?\s*(\d[\d,]+)"         # remuneration
+            r"\s+\$?\s*(\d[\d,]+|-)"    # expenses
+            r"\s+\$?\s*(\d[\d,]+|-)"    # benefit
+            r"(?:\s+\$?\s*[\d,]+)?",    # total (skip)
+            line, re.IGNORECASE
+        )
+        if not m:
+            continue
+        pos = normalise_position(m.group(2))
+        if not pos:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(3))
+        exp = clean_amount(m.group(4)) or 0
+        ben = clean_amount(m.group(5)) if m.group(5) and m.group(5).strip() != "-" else None
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
+    return rows
+
+
+def parse_sidney(text: str) -> list[dict]:
+    """NAME  POSITION  GROSS  BENEFITS  TOTAL  EXPENSES — heavy OCR spaces in amounts."""
+    # Collapse OCR spaces in numbers with commas: "4 5,122" -> "45,122", "8 ,060" -> "8,060"
+    text = re.sub(r"(?<=\s)(\d)\s+(\d{1,3},\d{3})", r"\1\2", text)
+    text = re.sub(r"(\d)\s+,(\d{3})", r"\1,\2", text)
+    # Collapse OCR spaces in small numbers without commas: "8 98" -> "898", "5 51" -> "551"
+    text = re.sub(r"(?<=\s)(\d)\s+(\d{2,3})(?=\s|$)", r"\1\2", text)
+    # ...existing code...
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^(NAME|TOTAL|STATEMENT|SCHEDULE|YEAR|ELECTED|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"(Mayor|Councillors?)\s+"
+            r"\$?\s*(\d[\d,]+)"         # gross (remuneration)
+            r"\s+\$?\s*(\d[\d,]+|-)"    # benefits
+            r"\s+\$?\s*(\d[\d,]+|-)"    # total (skip)
+            r"\s+\$?\s*(\d[\d,]+|-)",   # expenses
+            line, re.IGNORECASE
+        )
+        if not m:
+            continue
+        pos = normalise_position(m.group(2))
+        if not pos:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(3))
+        ben = clean_amount(m.group(4)) if m.group(4) and m.group(4).strip() != "-" else None
+        exp = clean_amount(m.group(6)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
     return rows
 
 
@@ -781,14 +933,18 @@ PARSERS = {
     "Delta":           parse_delta,
     "Esquimalt":       parse_esquimalt,
     "Kamloops":        parse_kamloops,
+    "Maple Ridge":     parse_maple_ridge,
     "New Westminster": parse_new_westminster,
     "North Cowichan":  parse_north_cowichan,
     "Oak Bay":         parse_oak_bay,
     "Pitt Meadows":    parse_pitt_meadows,
     "Port Alberni":    parse_port_alberni,
+    "Port Coquitlam":  parse_port_coquitlam,
     "Prince George":   parse_prince_george,
     "Prince Rupert":   parse_prince_rupert,
     "Quesnel":         parse_quesnel,
+    "Salmon Arm":      parse_salmon_arm,
+    "Sidney":          parse_sidney,
     "Victoria":        parse_victoria,
 }
 
@@ -812,7 +968,8 @@ def _municipality_from_watermark(text: str) -> str | None:
     return None
 
 
-def extract_all(merged_pdf: str = "data_prep/remuneration_pages_2024.pdf") -> pd.DataFrame:
+#def extract_all(merged_pdf: str = "data_prep/remuneration_pages_2024.pdf") -> pd.DataFrame:
+def extract_all(merged_pdf: str = "app/remuneration_schedules_2024.pdf") -> pd.DataFrame:
     merged_path = Path(merged_pdf)
     if not merged_path.exists():
         raise FileNotFoundError(f"Merged PDF not found: {merged_path}")
@@ -852,10 +1009,11 @@ def extract_all(merged_pdf: str = "data_prep/remuneration_pages_2024.pdf") -> pd
                     "position":     row["position"],
                     "remuneration": row["remuneration"],
                     "expenses":     row["expenses"],
+                    "benefits":     row.get("benefits"),
                 })
 
     if not records:
-        return pd.DataFrame(columns=["municipality", "year", "name", "position", "remuneration", "expenses"])
+        return pd.DataFrame(columns=["municipality", "year", "name", "position", "remuneration", "expenses", "benefits"])
 
     df = pd.DataFrame(records).astype({
         "municipality": "string",
@@ -865,6 +1023,7 @@ def extract_all(merged_pdf: str = "data_prep/remuneration_pages_2024.pdf") -> pd
         "remuneration": "int32",
         "expenses":     "int32",
     })
+    # benefits is nullable — keep as object (int or None)
     return df
 
 
@@ -876,6 +1035,11 @@ if __name__ == "__main__":
     if manual_path.exists():
         manual = pd.read_csv(manual_path).dropna(subset=["remuneration"])
         if not manual.empty:
+            if "benefits" not in manual.columns:
+                manual["benefits"] = None
+            else:
+                # Convert to nullable Int32 so NaN stays NaN (not float)
+                manual["benefits"] = pd.array(manual["benefits"], dtype="Int32")
             manual = manual.astype({
                 "municipality": "string",
                 "year": "int32",
@@ -903,6 +1067,7 @@ if __name__ == "__main__":
                     "position":     row["position"],
                     "remuneration": int(row["remuneration"]),
                     "expenses":     int(row["expenses"]),
+                    "benefits":     int(row["benefits"]) if pd.notna(row.get("benefits")) and row.get("benefits") is not None else None,
                 }
                 for _, row in group.iterrows()
             ]
