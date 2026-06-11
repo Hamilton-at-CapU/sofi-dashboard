@@ -41,6 +41,7 @@ PAGE_OVERRIDES = {
     "Pitt Meadows":    [29],   # p30 elected officials
     "Port Coquitlam":  [34],   # p35 "SCHEDULE OF ELECTED OFFICALS REMUNERATION AND EXPENSES"
     "Powell River":    [60],   # p61 name/position/remuneration columns
+    "Richmond":        [45],   # p46 "Schedule of Remuneration and Expenses - Elected Officials"
     "Saanich":         [40],   # p41 "Schedule of Council Remuneration and Expenses"
     "Squamish":        [38],   # image based pdf
     "Surrey":          [67],   # p68 "Schedule of Remuneration and Expenses - Elected Officials"

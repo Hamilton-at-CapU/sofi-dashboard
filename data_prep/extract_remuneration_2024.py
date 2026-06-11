@@ -921,6 +921,42 @@ def parse_sidney(text: str) -> list[dict]:
 
 
 
+def parse_richmond(text: str) -> list[dict]:
+    """Name  Title  Base Salary  Benefits & Other  Expenses — clean layout, benefits present."""
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        # Normalise "Heed,Kash" -> "Heed, Kash"
+        line = re.sub(r",([A-Za-z])", r", \1", line)
+        if re.match(r"^(Name|Total|Benefits|Expenses|Schedule|City|Section|Consists|1\.|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"(Mayor|Councillors?)\s+"
+            r"\$?\s*(\d[\d,]+)"             # base salary (remuneration)
+            r"\s+\$?\s*(\d[\d,]+)"          # benefits & other
+            r"(?:\s+\$?\s*(\d[\d,]+|-))?"   # expenses (optional)
+            ,
+            line, re.IGNORECASE
+        )
+        if not m:
+            continue
+        pos = normalise_position(m.group(2))
+        if not pos:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(3))
+        ben = clean_amount(m.group(4))
+        exp = clean_amount(m.group(5)) or 0 if m.group(5) else 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
+    return rows
+
+
 def parse_saanich(text: str) -> list[dict]:
     """ELECTED OFFICIAL  POSITION  REMUNERATION  EXPENSES — clean layout, no benefits."""
     rows = []
@@ -1148,6 +1184,7 @@ PARSERS = {
     "Prince George":   parse_prince_george,
     "Prince Rupert":   parse_prince_rupert,
     "Quesnel":         parse_quesnel,
+    "Richmond":        parse_richmond,
     "Saanich":         parse_saanich,
     "Salmon Arm":      parse_salmon_arm,
     "Sidney":          parse_sidney,
@@ -1170,10 +1207,13 @@ def extract_from_pdf(pdf_path: Path, municipality: str) -> list[dict]:
 
 def _municipality_from_watermark(text: str) -> str | None:
     """Extract municipality name from watermark line e.g. 'Abbotsford — 2024'.
-    Also handles Vancouver's non-standard multi-line header."""
-    # Vancouver header spans multiple lines — check full page text
+    Also handles non-standard headers for Vancouver and Richmond."""
+    # Vancouver header spans multiple lines
     if re.search(r"MAYOR AND COUNCILLORS.*CITY OF VANCOUVER", text, re.IGNORECASE | re.DOTALL):
         return "Vancouver"
+    # Richmond header: "CITY OF RICHMOND Section 6"
+    if re.search(r"CITY OF RICHMOND", text, re.IGNORECASE):
+        return "Richmond"
     # Standard watermark: first non-empty line is "Municipality — 2024"
     first_line = next((l.strip() for l in text.splitlines() if l.strip()), "")
     m = re.match(r"^(.+?)\s*[—\-–]\s*\d{4}", first_line)

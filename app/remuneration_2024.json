@@ -2313,6 +2313,75 @@
   },
   {
     "year": 2024,
+    "municipality": "Richmond",
+    "councillors": [
+      {
+        "name": "Brodie, Malcolm",
+        "position": "Mayor",
+        "remuneration": 207510,
+        "expenses": 1814,
+        "benefits": 27290
+      },
+      {
+        "name": "Au, Chak",
+        "position": "Councillor",
+        "remuneration": 82783,
+        "expenses": 828,
+        "benefits": 14127
+      },
+      {
+        "name": "Day, Carol",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 2341,
+        "benefits": 17026
+      },
+      {
+        "name": "Gillanders, Laura",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 1990,
+        "benefits": 17100
+      },
+      {
+        "name": "Heed, Kash",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 0,
+        "benefits": 16647
+      },
+      {
+        "name": "Hobbs, Andrew",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 1767,
+        "benefits": 17100
+      },
+      {
+        "name": "Loo, Alexa",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 6662,
+        "benefits": 17026
+      },
+      {
+        "name": "McNulty, William",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 741,
+        "benefits": 16789
+      },
+      {
+        "name": "Wolfe, Michael",
+        "position": "Councillor",
+        "remuneration": 94089,
+        "expenses": 1028,
+        "benefits": 17122
+      }
+    ]
+  },
+  {
+    "year": 2024,
     "municipality": "Saanich",
     "councillors": [
       {
