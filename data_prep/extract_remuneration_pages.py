@@ -28,6 +28,7 @@ PAGE_OVERRIDES = {
     "Colwood":         [8],    # p9  "Schedule of Council Remuneration and Expenses"
     "Esquimalt":       [38],   # p39 "Schedule of Council Remuneration"
     "Kamloops":        [8],    # p9  elected officials page
+    "Kelowna":         [1],    # p2  council remuneration and expense report
     "Maple Ridge":     [40],   # p41 cleaner format
     "Mission":         [5],    # image based pdf
     "Nanaimo":         [4],    # p5  elected officials
@@ -40,8 +41,11 @@ PAGE_OVERRIDES = {
     "Pitt Meadows":    [29],   # p30 elected officials
     "Port Coquitlam":  [34],   # p35 "SCHEDULE OF ELECTED OFFICALS REMUNERATION AND EXPENSES"
     "Powell River":    [60],   # p61 name/position/remuneration columns
+    "Saanich":         [40],   # p41 "Schedule of Council Remuneration and Expenses"
     "Squamish":        [38],   # image based pdf
+    "Surrey":          [67],   # p68 "Schedule of Remuneration and Expenses - Elected Officials"
     "Terrace":         [1],    # image based pdf
+    "Vancouver":       [82],   # p83 "Mayor and Councillors Remuneration and Expenses"
     "Victoria":        [50],   # p51 "STATEMENT OF COUNCIL REMUNERATION AND EXPENSES"
     "Williams Lake":   [27],   # p28 elected officials
 }

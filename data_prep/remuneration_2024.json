@@ -937,6 +937,75 @@
   },
   {
     "year": 2024,
+    "municipality": "Kelowna",
+    "councillors": [
+      {
+        "name": "Dyas T",
+        "position": "Mayor",
+        "remuneration": 142363,
+        "expenses": 15609,
+        "benefits": null
+      },
+      {
+        "name": "Cannan R",
+        "position": "Councillor",
+        "remuneration": 44735,
+        "expenses": 5884,
+        "benefits": null
+      },
+      {
+        "name": "DeHart M",
+        "position": "Councillor",
+        "remuneration": 47866,
+        "expenses": 8520,
+        "benefits": null
+      },
+      {
+        "name": "Hodge C",
+        "position": "Councillor",
+        "remuneration": 47967,
+        "expenses": 1374,
+        "benefits": null
+      },
+      {
+        "name": "Lovegrove G",
+        "position": "Councillor",
+        "remuneration": 47973,
+        "expenses": 5025,
+        "benefits": null
+      },
+      {
+        "name": "Singh M",
+        "position": "Councillor",
+        "remuneration": 47973,
+        "expenses": 169,
+        "benefits": null
+      },
+      {
+        "name": "Stack L",
+        "position": "Councillor",
+        "remuneration": 49002,
+        "expenses": 4048,
+        "benefits": null
+      },
+      {
+        "name": "Webber R",
+        "position": "Councillor",
+        "remuneration": 47967,
+        "expenses": 225,
+        "benefits": null
+      },
+      {
+        "name": "Wooldridge L",
+        "position": "Councillor",
+        "remuneration": 45129,
+        "expenses": 1766,
+        "benefits": null
+      }
+    ]
+  },
+  {
+    "year": 2024,
     "municipality": "Lake Country",
     "councillors": [
       {
@@ -2244,6 +2313,75 @@
   },
   {
     "year": 2024,
+    "municipality": "Saanich",
+    "councillors": [
+      {
+        "name": "Murdock, Dean",
+        "position": "Mayor",
+        "remuneration": 146688,
+        "expenses": 2670,
+        "benefits": null
+      },
+      {
+        "name": "Brice, Susan",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 4018,
+        "benefits": null
+      },
+      {
+        "name": "Brownoff, Judy",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 300,
+        "benefits": null
+      },
+      {
+        "name": "Chambers, Nathalie",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 4220,
+        "benefits": null
+      },
+      {
+        "name": "de Vries, Zac",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 4811,
+        "benefits": null
+      },
+      {
+        "name": "Harper, Karen",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 5482,
+        "benefits": null
+      },
+      {
+        "name": "Phelps Bondaroff, Teale",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 5998,
+        "benefits": null
+      },
+      {
+        "name": "Plant, Colin",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 3132,
+        "benefits": null
+      },
+      {
+        "name": "Westhaver, Mena",
+        "position": "Councillor",
+        "remuneration": 59365,
+        "expenses": 5727,
+        "benefits": null
+      }
+    ]
+  },
+  {
+    "year": 2024,
     "municipality": "Salmon Arm",
     "councillors": [
       {
@@ -2519,6 +2657,75 @@
   },
   {
     "year": 2024,
+    "municipality": "Surrey",
+    "councillors": [
+      {
+        "name": "Locke, B",
+        "position": "Mayor",
+        "remuneration": 170975,
+        "expenses": 21156,
+        "benefits": 14703
+      },
+      {
+        "name": "Annis, L",
+        "position": "Councillor",
+        "remuneration": 92733,
+        "expenses": 9387,
+        "benefits": 7558
+      },
+      {
+        "name": "Bains, H",
+        "position": "Councillor",
+        "remuneration": 92564,
+        "expenses": 5613,
+        "benefits": 7558
+      },
+      {
+        "name": "Bose, M",
+        "position": "Councillor",
+        "remuneration": 92733,
+        "expenses": 14489,
+        "benefits": 7558
+      },
+      {
+        "name": "Elford, D",
+        "position": "Councillor",
+        "remuneration": 92856,
+        "expenses": 12350,
+        "benefits": 7558
+      },
+      {
+        "name": "Hepner, G",
+        "position": "Councillor",
+        "remuneration": 92856,
+        "expenses": 8177,
+        "benefits": 7558
+      },
+      {
+        "name": "Kooner, P",
+        "position": "Councillor",
+        "remuneration": 92856,
+        "expenses": 12100,
+        "benefits": 7558
+      },
+      {
+        "name": "Nagra, M",
+        "position": "Councillor",
+        "remuneration": 92856,
+        "expenses": 10151,
+        "benefits": 7558
+      },
+      {
+        "name": "Stutt, R",
+        "position": "Councillor",
+        "remuneration": 92856,
+        "expenses": 12040,
+        "benefits": 7558
+      }
+    ]
+  },
+  {
+    "year": 2024,
     "municipality": "Terrace",
     "councillors": [
       {
@@ -2568,6 +2775,89 @@
         "position": "Councillor",
         "remuneration": 22417,
         "expenses": 5659,
+        "benefits": null
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Vancouver",
+    "councillors": [
+      {
+        "name": "Sim, K",
+        "position": "Mayor",
+        "remuneration": 207958,
+        "expenses": 50790,
+        "benefits": null
+      },
+      {
+        "name": "Bligh, R",
+        "position": "Councillor",
+        "remuneration": 113551,
+        "expenses": 16775,
+        "benefits": null
+      },
+      {
+        "name": "Boyle, C",
+        "position": "Councillor",
+        "remuneration": 102674,
+        "expenses": 7512,
+        "benefits": null
+      },
+      {
+        "name": "Carr, A",
+        "position": "Councillor",
+        "remuneration": 108263,
+        "expenses": 12277,
+        "benefits": null
+      },
+      {
+        "name": "Dominato, L",
+        "position": "Councillor",
+        "remuneration": 113411,
+        "expenses": 16496,
+        "benefits": null
+      },
+      {
+        "name": "Fry, P",
+        "position": "Councillor",
+        "remuneration": 118514,
+        "expenses": 14718,
+        "benefits": null
+      },
+      {
+        "name": "Kirby-Yung, S",
+        "position": "Councillor",
+        "remuneration": 119749,
+        "expenses": 14838,
+        "benefits": null
+      },
+      {
+        "name": "Klassen M",
+        "position": "Councillor",
+        "remuneration": 115919,
+        "expenses": 15331,
+        "benefits": null
+      },
+      {
+        "name": "Meiszner, P",
+        "position": "Councillor",
+        "remuneration": 114729,
+        "expenses": 14834,
+        "benefits": null
+      },
+      {
+        "name": "Montague, B",
+        "position": "Councillor",
+        "remuneration": 113411,
+        "expenses": 6805,
+        "benefits": null
+      },
+      {
+        "name": "Zhou, N",
+        "position": "Councillor",
+        "remuneration": 119117,
+        "expenses": 12435,
         "benefits": null
       }
     ]

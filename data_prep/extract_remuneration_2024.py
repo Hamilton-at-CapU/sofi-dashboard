@@ -920,6 +920,210 @@ def parse_sidney(text: str) -> list[dict]:
     return rows
 
 
+
+def parse_saanich(text: str) -> list[dict]:
+    """ELECTED OFFICIAL  POSITION  REMUNERATION  EXPENSES — clean layout, no benefits."""
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^(ELECTED|Name|Total|\$|Schedule|Corporation|Statement|For the|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"(Mayor|Councillors?)\s+"
+            r"\$?\s*(\d[\d,]+)"         # remuneration
+            r"\s+\$?\s*(\d[\d,]+|-)",   # expenses
+            line, re.IGNORECASE
+        )
+        if not m:
+            continue
+        pos = normalise_position(m.group(2))
+        if not pos:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(3))
+        exp = clean_amount(m.group(4)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
+    return rows
+
+
+def parse_kelowna(text: str) -> list[dict]:
+    """Surname  First Initial  Remuneration ($)  Expenses ($)
+    Section headers 'Mayor' / 'Councillors' on their own lines.
+    OCR spaces in amounts handled by clean_amount."""
+    current_pos = None
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^Mayor\s*$", line, re.IGNORECASE):
+            current_pos = "Mayor"
+            continue
+        if re.match(r"^Councillors?\s*$", line, re.IGNORECASE):
+            current_pos = "Councillor"
+            continue
+        if current_pos is None:
+            continue
+        if re.match(r"^(Total|Surname|Taxable|City of|Council|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-]+(?:\s+[\w\u00C0-\u024F',\.\-]+)?)\s+"
+            r"([A-Z])\s+"               # first initial
+            r"\$?\s*(\d[\d,\s]+)"       # remuneration (may have OCR spaces)
+            r"\s+\$?\s*([\d,\s]+|-)",   # expenses (may have OCR spaces)
+            line
+        )
+        if not m:
+            continue
+        surname = m.group(1).strip()
+        initial = m.group(2).strip()
+        name = f"{surname} {initial}"
+        if not is_valid_name(surname):
+            continue
+        rem = clean_amount(m.group(3))
+        exp = clean_amount(m.group(4)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": current_pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
+    return rows
+
+
+def parse_surrey(text: str) -> list[dict]:
+    """Name  Base Salary  Separation Allowance  Taxable Benefits  Expenses  Total
+    OCR spaces in amounts. Highest paid = Mayor. Benefits extracted.
+    Mayor row has $ signs; councillor rows do not."""
+    # Collapse OCR spaces only within a single number token:
+    # "1 70,975" -> "170,975"  but NOT across column boundaries
+    # Only collapse digit+space+digit when followed by exactly one comma-group
+    text = re.sub(r"(?<!\d)(\d)\s+(\d{2},\d{3}|\d{3},\d{3})(?!\d)", r"\1\2", text)
+    text = re.sub(r"(\d)\s+,(\d{3})", r"\1,\2", text)
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^(ELECTED|BASE|Name|Total|\$|Per Statement|Variance|Taxable|Page|Elected Officials|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"\$?\s*(\d[\d,]+)"         # base salary (remuneration)
+            r"\s+\$?\s*(\d[\d,]+)"      # separation allowance (skip)
+            r"\s+\$?\s*(\d[\d,]+)"      # taxable benefits
+            r"\s+\$?\s*(\d[\d,]+)"      # expenses
+            r"(?:\s+\$?\s*[\d,]+)?",    # total (skip)
+            line
+        )
+        if not m:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(2))
+        ben = clean_amount(m.group(4))
+        exp = clean_amount(m.group(5)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": None,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": ben})
+    if not rows:
+        return rows
+    max_rem = max(r["remuneration"] for r in rows)
+    for r in rows:
+        r["position"] = "Mayor" if r["remuneration"] == max_rem else "Councillor"
+    return rows
+
+
+def parse_vancouver(text: str) -> list[dict]:
+    """Fallback text parser — not used when page object is available."""
+    return []
+
+
+def parse_vancouver_page(page) -> list[dict]:
+    """Bbox word-group parser for Vancouver — handles extreme character-level OCR spacing.
+    Columns: Name  Remuneration  Local Expenses  Travel & Conferences  Discretionary Expenses
+    Expenses = sum of cols 2+3+4. Highest paid = Mayor."""
+    from collections import defaultdict
+
+    words = page.extract_words(x_tolerance=3, y_tolerance=3)
+
+    # Group words into rows by top coordinate (bucket to nearest 2px)
+    rows_by_top = defaultdict(list)
+    for w in words:
+        row_key = round(w["top"] / 2) * 2
+        rows_by_top[row_key].append(w)
+
+    # Data rows: top between ~130 and ~280 (header rows are ~90-120, totals/notes ~285+)
+    # Identify column x-positions from header row (top ~116): Name(1), (2), (3), (4)
+    # Name is leftmost (~x0=90), then 4 numeric columns spread across page
+    # From session output: rem at ~x0=240, local_exp ~x0=320, travel ~x0=400, discret ~x0=480
+
+    rows = []
+    for top in sorted(rows_by_top):
+        row_words = sorted(rows_by_top[top], key=lambda w: w["x0"])
+
+        # Skip header/footer rows
+        joined = " ".join(w["text"] for w in row_words)
+        if re.search(r"(MAYOR|REMUNERATION|Name|Travel|Local|Discret|\(1\)|\(2\)|\(3\)|\(4\)|Total|^\$)", joined, re.IGNORECASE):
+            continue
+        if top > 285:  # totals/notes section
+            break
+
+        # Collapse character-spaced tokens into clean strings grouped by x position
+        # Words with x0 < 220 are the name; others are numeric columns
+        name_words = [w["text"] for w in row_words if w["x0"] < 220]
+        num_words  = [w for w in row_words if w["x0"] >= 220]
+
+        if not name_words or not num_words:
+            continue
+
+        # Collapse name tokens — strip single-char OCR fragments into full tokens
+        # e.g. ["S", "im", ",", "K"] -> "Sim, K"
+        raw_name = "".join(name_words)
+        # Clean up: ensure comma-space between surname and initial
+        raw_name = re.sub(r",([A-Z])", r", \1", raw_name)
+
+        # Collapse numeric tokens — join and then parse out 4 numbers
+        num_str = " ".join(w["text"] for w in num_words)
+        # Remove $ signs and collapse OCR digit spacing
+        num_str = re.sub(r"\$", "", num_str)
+        num_str = re.sub(r"(\d)\s+(\d)", r"\1\2", num_str)
+        num_str = re.sub(r"(\d)\s+,(\d)", r"\1,\2", num_str)
+
+        # Extract up to 4 numbers
+        nums = re.findall(r"\d[\d,]*", num_str)
+        if len(nums) < 1:
+            continue
+
+        # Clean each amount
+        amounts = [clean_amount(n) for n in nums[:4]]
+        rem = amounts[0] if amounts else None
+        exp_parts = amounts[1:]  # local, travel, discretionary
+        exp = sum(v for v in exp_parts if v is not None and v != 0) if exp_parts else 0
+
+        if not rem or rem < 5_000:
+            continue
+        if not is_valid_name(raw_name):
+            continue
+
+        rows.append({
+            "name":         raw_name,
+            "position":     None,
+            "remuneration": rem,
+            "expenses":     exp,
+            "benefits":     None,
+        })
+
+    if not rows:
+        return rows
+    max_rem = max(r["remuneration"] for r in rows)
+    for r in rows:
+        r["position"] = "Mayor" if r["remuneration"] == max_rem else "Councillor"
+    return rows
+
+
 # ---------------------------------------------------------------------------
 # Per-municipality dispatcher
 # ---------------------------------------------------------------------------
@@ -933,6 +1137,7 @@ PARSERS = {
     "Delta":           parse_delta,
     "Esquimalt":       parse_esquimalt,
     "Kamloops":        parse_kamloops,
+    "Kelowna":         parse_kelowna,
     "Maple Ridge":     parse_maple_ridge,
     "New Westminster": parse_new_westminster,
     "North Cowichan":  parse_north_cowichan,
@@ -943,8 +1148,11 @@ PARSERS = {
     "Prince George":   parse_prince_george,
     "Prince Rupert":   parse_prince_rupert,
     "Quesnel":         parse_quesnel,
+    "Saanich":         parse_saanich,
     "Salmon Arm":      parse_salmon_arm,
     "Sidney":          parse_sidney,
+    "Surrey":          parse_surrey,
+    "Vancouver":       parse_vancouver,
     "Victoria":        parse_victoria,
 }
 
@@ -961,14 +1169,19 @@ def extract_from_pdf(pdf_path: Path, municipality: str) -> list[dict]:
 # ---------------------------------------------------------------------------
 
 def _municipality_from_watermark(text: str) -> str | None:
-    """Extract municipality name from watermark line e.g. 'Abbotsford — 2024'."""
-    m = re.match(r"^(.+?)\s*[—\-–]\s*\d{4}", text.strip())
+    """Extract municipality name from watermark line e.g. 'Abbotsford — 2024'.
+    Also handles Vancouver's non-standard multi-line header."""
+    # Vancouver header spans multiple lines — check full page text
+    if re.search(r"MAYOR AND COUNCILLORS.*CITY OF VANCOUVER", text, re.IGNORECASE | re.DOTALL):
+        return "Vancouver"
+    # Standard watermark: first non-empty line is "Municipality — 2024"
+    first_line = next((l.strip() for l in text.splitlines() if l.strip()), "")
+    m = re.match(r"^(.+?)\s*[—\-–]\s*\d{4}", first_line)
     if m:
         return m.group(1).strip()
     return None
 
 
-#def extract_all(merged_pdf: str = "data_prep/remuneration_pages_2024.pdf") -> pd.DataFrame:
 def extract_all(merged_pdf: str = "app/remuneration_schedules_2024.pdf") -> pd.DataFrame:
     merged_path = Path(merged_pdf)
     if not merged_path.exists():
@@ -979,19 +1192,21 @@ def extract_all(merged_pdf: str = "app/remuneration_schedules_2024.pdf") -> pd.D
     with pdfplumber.open(merged_path) as pdf:
         for page in pdf.pages:
             text = page.extract_text() or ""
-            # First non-empty line contains the watermark: "Municipality — 2024"
-            first_line = next((l.strip() for l in text.splitlines() if l.strip()), "")
-            municipality = _municipality_from_watermark(first_line)
+            municipality = _municipality_from_watermark(text)
             if not municipality:
+                first_line = next((l.strip() for l in text.splitlines() if l.strip()), "")
                 print(f"WARN: could not identify municipality from watermark: {first_line!r}")
                 continue
 
             print(f"Reading {municipality} ...", end=" ", flush=True)
             try:
-                parser = PARSERS.get(municipality, parse_standard)
-                # Strip the watermark line before parsing
-                body = "\n".join(text.splitlines()[1:])
-                rows = parser(body)
+                # Vancouver needs bbox page object due to extreme character OCR spacing
+                if municipality == "Vancouver":
+                    rows = parse_vancouver_page(page)
+                else:
+                    parser = PARSERS.get(municipality, parse_standard)
+                    body = "\n".join(text.splitlines()[1:])
+                    rows = parser(body)
             except Exception as e:
                 print(f"ERROR: {e}")
                 continue
@@ -1023,7 +1238,6 @@ def extract_all(merged_pdf: str = "app/remuneration_schedules_2024.pdf") -> pd.D
         "remuneration": "int32",
         "expenses":     "int32",
     })
-    # benefits is nullable — keep as object (int or None)
     return df
 
 
