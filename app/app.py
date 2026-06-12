@@ -314,8 +314,7 @@ ui.page_opts(title="Council Pay Dashboard", fillable=False)
 
 with ui.sidebar():
 
-    ui.markdown("Compare mayor and councillor remuneration across BC municipalities.")
-    ui.markdown("(Not all municipalities are included.  If you would like a specific municipality included, please send me an email.)")
+    ui.markdown("Compare mayor and councillor remuneration across BC municipalities with populations greater than 5,000 people.")
     ui.hr()
 
     ui.h6("Selected Municipalities")
