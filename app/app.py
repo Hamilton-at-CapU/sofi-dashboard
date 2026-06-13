@@ -145,8 +145,8 @@ TRENDS_CHOICES = {
     "taxes": "Mayor Remuneration vs Total Taxes Collected",
 }
 
-POP_MIN  = 500
-POP_MAX  = 100_000
+POP_MIN  = 5000
+POP_MAX  = 500_000
 PTAX_MIN = int(_ptax.min() // 500     * 500)
 PTAX_MAX = int((_ptax.max() + 499)    // 500     * 500)
 
@@ -345,7 +345,7 @@ with ui.sidebar():
             min=POP_MIN,
             max=POP_MAX,
             value=[5_000, 50_000],
-            step=500,
+            step=5000,
             sep=",",
             width="100%",
         )
