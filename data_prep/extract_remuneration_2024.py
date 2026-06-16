@@ -215,7 +215,7 @@ def parse_position_first(text: str) -> list[dict]:
 
 def parse_delta(text: str) -> list[dict]:
     """Position Name  Remuneration  Car Allowance  Total  Expenses  Benefits
-    Takes col 1 (remuneration) and col 4 (expenses). Heavy OCR spaces throughout."""
+    Takes col 3 (Total = Remuneration + Car Allowance) and col 4 (expenses)."""
     # Collapse OCR spaces in large numbers: "7 7,838" -> "77,838", "3 ,199" -> "3,199"
     text = re.sub(r"(?<=\s)(\d)\s+(\d{1,3},\d{3})", r"\1\2", text)
     text = re.sub(r"(\d)\s+,(\d{3})", r"\1,\2", text)
@@ -241,7 +241,7 @@ def parse_delta(text: str) -> list[dict]:
         name = m.group(2).strip()
         if not is_valid_name(name):
             continue
-        rem = clean_amount(m.group(3))
+        rem = clean_amount(m.group(5))  # Total column
         exp = clean_amount(m.group(6)) or 0
         ben = clean_amount(m.group(7)) if m.group(7) and m.group(7).strip() != "-" else None
         if rem and rem > 5_000:
@@ -442,6 +442,47 @@ def parse_abbotsford(text: str) -> list[dict]:
 
 
 # ...existing code...
+
+
+def parse_langley_city(text: str) -> list[dict]:
+    """Mayor: / Councillors: section headers, then Name  $ rem  $ exp  $ total
+    OCR spaces in amounts e.g. '1 39,645' -> '139,645'."""
+    # Collapse OCR spaces inside numbers: "1 39,645" -> "139,645", "6 ,840" -> "6,840"
+    text = re.sub(r"(?<=\s)(\d)\s+(\d{1,3},\d{3})", r"\1\2", text)
+    text = re.sub(r"(\d)\s+,(\d{3})", r"\1,\2", text)
+    current_pos = None
+    rows = []
+    for line in text.splitlines():
+        line = line.strip()
+        if re.match(r"^Mayor\s*:", line, re.IGNORECASE):
+            current_pos = "Mayor"
+            continue
+        if re.match(r"^Councillors?\s*:", line, re.IGNORECASE):
+            current_pos = "Councillor"
+            continue
+        if current_pos is None:
+            continue
+        if re.match(r"^(Total|\$|Elected|Schedule|City|$)", line, re.IGNORECASE):
+            continue
+        m = re.match(
+            r"^([\w\u00C0-\u024F',\.\-][\w\u00C0-\u024F',\.\-\s]+?)\s+"
+            r"\$?\s*(\d[\d,]+)"         # remuneration
+            r"\s+\$?\s*(\d[\d,]+|-)"    # expenses
+            r"(?:\s+\$?\s*[\d,]+)?",    # total (skip)
+            line
+        )
+        if not m:
+            continue
+        name = m.group(1).strip()
+        if not is_valid_name(name):
+            continue
+        rem = clean_amount(m.group(2))
+        exp = clean_amount(m.group(3)) or 0
+        if rem and rem > 5_000:
+            rows.append({"name": name, "position": current_pos,
+                         "remuneration": rem, "expenses": exp,
+                         "benefits": None})
+    return rows
 
 
 def parse_quesnel(text: str) -> list[dict]:
@@ -1174,6 +1215,7 @@ PARSERS = {
     "Esquimalt":       parse_esquimalt,
     "Kamloops":        parse_kamloops,
     "Kelowna":         parse_kelowna,
+    "Langley (City)":  parse_langley_city,
     "Maple Ridge":     parse_maple_ridge,
     "New Westminster": parse_new_westminster,
     "North Cowichan":  parse_north_cowichan,

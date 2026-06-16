@@ -708,49 +708,49 @@
       {
         "name": "G. Harvie",
         "position": "Mayor",
-        "remuneration": 182919,
+        "remuneration": 201625,
         "expenses": 3199,
         "benefits": 7344
       },
       {
         "name": "R. Binder",
         "position": "Councillor",
-        "remuneration": 77838,
+        "remuneration": 90189,
         "expenses": 10342,
         "benefits": 6501
       },
       {
         "name": "D. Boisvert",
         "position": "Councillor",
-        "remuneration": 77838,
+        "remuneration": 90189,
         "expenses": 5884,
         "benefits": 7705
       },
       {
         "name": "J. Dosanjh",
         "position": "Councillor",
-        "remuneration": 77838,
+        "remuneration": 90189,
         "expenses": 735,
         "benefits": 6501
       },
       {
         "name": "A. Guichon",
         "position": "Councillor",
-        "remuneration": 77838,
+        "remuneration": 90189,
         "expenses": 520,
         "benefits": 7705
       },
       {
         "name": "J. Johal",
         "position": "Councillor",
-        "remuneration": 77838,
+        "remuneration": 90189,
         "expenses": 9918,
         "benefits": 7705
       },
       {
         "name": "D. Kruger",
         "position": "Councillor",
-        "remuneration": 96143,
+        "remuneration": 108494,
         "expenses": 4559,
         "benefits": 7705
       }
@@ -1110,6 +1110,61 @@
         "position": "Councillor",
         "remuneration": 40004,
         "expenses": 7321,
+        "benefits": null
+      }
+    ]
+  },
+  {
+    "year": 2024,
+    "municipality": "Langley (City)",
+    "councillors": [
+      {
+        "name": "Pachal, Nathan J.",
+        "position": "Mayor",
+        "remuneration": 139645,
+        "expenses": 6840,
+        "benefits": null
+      },
+      {
+        "name": "Albrecht, Paul E.",
+        "position": "Councillor",
+        "remuneration": 65167,
+        "expenses": 12414,
+        "benefits": null
+      },
+      {
+        "name": "James, Teri L.",
+        "position": "Councillor",
+        "remuneration": 65167,
+        "expenses": 6131,
+        "benefits": null
+      },
+      {
+        "name": "Mack, Delaney",
+        "position": "Councillor",
+        "remuneration": 65167,
+        "expenses": 12462,
+        "benefits": null
+      },
+      {
+        "name": "Solyom, Michael",
+        "position": "Councillor",
+        "remuneration": 67495,
+        "expenses": 5016,
+        "benefits": null
+      },
+      {
+        "name": "Wallace, Rosemary H.M.",
+        "position": "Councillor",
+        "remuneration": 65167,
+        "expenses": 9869,
+        "benefits": null
+      },
+      {
+        "name": "White, Leith",
+        "position": "Councillor",
+        "remuneration": 62840,
+        "expenses": 11361,
         "benefits": null
       }
     ]

@@ -32,61 +32,23 @@ def load_remuneration_data(path=None):
     return pd.DataFrame(rows)
 
 
-plot_df = load_remuneration_data()
+# Load both years
+_plot_df_2024 = load_remuneration_data(Path(__file__).parent / "remuneration_2024.json")
+_plot_df_2023 = load_remuneration_data(Path(__file__).parent / "remuneration_2023.json")
+_muni_data_2024 = pd.DataFrame(json.load(open(Path(__file__).parent / "municipal_data_2024.json")))
+_muni_data_2023 = pd.DataFrame(json.load(open(Path(__file__).parent / "municipal_data_2023.json")))
 
+ALL_DATA = {
+    2024: (_plot_df_2024, _muni_data_2024),
+    2023: (_plot_df_2023, _muni_data_2023),
+}
+
+# Use 2024 for sidebar filters and municipality list
+plot_df = _plot_df_2024
 MUNICIPALITIES  = sorted(plot_df["municipality"].unique().tolist())
-DEFAULT_MUNIS   = ["Burnaby", "North Vancouver (District)", "Pitt Meadows", "Powell River", "Squamish", ]
-YEAR            = int(plot_df["year"].max())
-mayor_df        = plot_df[plot_df["position"] == "Mayor"].copy()
+DEFAULT_MUNIS   = ["Burnaby", "North Vancouver (District)", "Pitt Meadows", "Powell River", "Squamish"]
 
-councillor_avg_df = (
-    plot_df[plot_df["position"] != "Mayor"]
-    .groupby("municipality", as_index=False)["remuneration"]
-    .mean()
-)
-
-councillor_to_mayor_df = (
-    councillor_avg_df
-    .rename(columns={"remuneration": "avg_councillor"})
-    .merge(
-        mayor_df[["municipality", "remuneration"]].rename(
-            columns={"remuneration": "mayor_remuneration"}
-        ),
-        on="municipality",
-        how="inner",
-    )
-    .assign(ratio=lambda d: d["avg_councillor"] / d["mayor_remuneration"] * 100)
-    .dropna(subset=["ratio"])
-)
-
-mayor_expenses_df = mayor_df[["municipality", "expenses"]].dropna().copy()
-
-councillor_avg_expenses_df = (
-    plot_df[plot_df["position"] != "Mayor"]
-    .groupby("municipality", as_index=False)["expenses"]
-    .mean()
-)
-
-mayor_benefits_df = (
-    mayor_df[["municipality", "benefits"]]
-    .dropna(subset=["benefits"])
-    .copy()
-)
-
-councillor_avg_benefits_df = (
-    plot_df[plot_df["position"] != "Mayor"]
-    .groupby("municipality", as_index=False)["benefits"]
-    .mean()
-    .dropna(subset=["benefits"])
-)
-
-# ---------------------------------------------------------------------------
-# Municipal data for filters
-# ---------------------------------------------------------------------------
-
-with open(Path(__file__).parent / "municipal_data_2024.json") as f:
-    _muni_data = pd.DataFrame(json.load(f))
-
+_muni_data = _muni_data_2024
 _pop = (
     _muni_data[["municipality", "Population"]]
     .dropna()
@@ -100,55 +62,16 @@ _ptax = (
     .astype(int)
 )
 
-scatter_df = (
-    mayor_df[["municipality", "remuneration"]]
-    .merge(
-        _muni_data[["municipality", "Population"]].dropna(),
-        on="municipality",
-        how="inner",
-    )
-    .rename(columns={"remuneration": "mayor_remuneration"})
-    .dropna()
-)
-
-scatter_ptax_df = (
-    mayor_df[["municipality", "remuneration"]]
-    .merge(
-        _muni_data[["municipality", "Total Property Taxes and Charges on Typical House"]].dropna(),
-        on="municipality",
-        how="inner",
-    )
-    .rename(columns={
-        "remuneration": "mayor_remuneration",
-        "Total Property Taxes and Charges on Typical House": "ptax",
-    })
-    .dropna()
-)
-
-scatter_taxes_df = (
-    mayor_df[["municipality", "remuneration"]]
-    .merge(
-        _muni_data[["municipality", "Total Taxes Collected"]].dropna(),
-        on="municipality",
-        how="inner",
-    )
-    .rename(columns={
-        "remuneration": "mayor_remuneration",
-        "Total Taxes Collected": "total_taxes",
-    })
-    .dropna()
-)
+POP_MIN  = 5000
+POP_MAX  = 500_000
+PTAX_MIN = int(_ptax.min() // 500     * 500)
+PTAX_MAX = int((_ptax.max() + 499)    // 500     * 500)
 
 TRENDS_CHOICES = {
     "pop":   "Mayor Remuneration vs Population",
     "ptax":  "Mayor Remuneration vs Property Tax on Typical House",
     "taxes": "Mayor Remuneration vs Total Taxes Collected",
 }
-
-POP_MIN  = 5000
-POP_MAX  = 500_000
-PTAX_MIN = int(_ptax.min() // 500     * 500)
-PTAX_MAX = int((_ptax.max() + 499)    // 500     * 500)
 
 VIEW_CHOICES = {
     "mayor":       "Mayor Remuneration",
@@ -159,6 +82,91 @@ VIEW_CHOICES = {
     "mayor_ben":   "Mayor Benefits",
     "council_ben": "Councillor Benefits",
 }
+
+
+def _derive(plot_df, muni_data):
+    """Derive all plot dataframes from a given year's data."""
+    mayor_df = plot_df[plot_df["position"] == "Mayor"].copy()
+
+    councillor_avg_df = (
+        plot_df[plot_df["position"] != "Mayor"]
+        .groupby("municipality", as_index=False)["remuneration"]
+        .mean()
+    )
+    councillor_to_mayor_df = (
+        councillor_avg_df
+        .rename(columns={"remuneration": "avg_councillor"})
+        .merge(
+            mayor_df[["municipality", "remuneration"]].rename(
+                columns={"remuneration": "mayor_remuneration"}
+            ),
+            on="municipality", how="inner",
+        )
+        .assign(ratio=lambda d: d["avg_councillor"] / d["mayor_remuneration"] * 100)
+        .dropna(subset=["ratio"])
+    )
+    mayor_expenses_df         = mayor_df[["municipality", "expenses"]].dropna().copy()
+    councillor_avg_expenses_df = (
+        plot_df[plot_df["position"] != "Mayor"]
+        .groupby("municipality", as_index=False)["expenses"].mean()
+    )
+    mayor_benefits_df = mayor_df[["municipality", "benefits"]].dropna(subset=["benefits"]).copy()
+    councillor_avg_benefits_df = (
+        plot_df[plot_df["position"] != "Mayor"]
+        .groupby("municipality", as_index=False)["benefits"].mean()
+        .dropna(subset=["benefits"])
+    )
+    scatter_df = (
+        mayor_df[["municipality", "remuneration"]]
+        .merge(muni_data[["municipality", "Population"]].dropna(), on="municipality", how="inner")
+        .rename(columns={"remuneration": "mayor_remuneration"})
+        .dropna()
+    )
+    scatter_ptax_df = (
+        mayor_df[["municipality", "remuneration"]]
+        .merge(muni_data[["municipality", "Total Property Taxes and Charges on Typical House"]].dropna(), on="municipality", how="inner")
+        .rename(columns={"remuneration": "mayor_remuneration", "Total Property Taxes and Charges on Typical House": "ptax"})
+        .dropna()
+    )
+    scatter_taxes_df = (
+        mayor_df[["municipality", "remuneration"]]
+        .merge(muni_data[["municipality", "Total Taxes Collected"]].dropna(), on="municipality", how="inner")
+        .rename(columns={"remuneration": "mayor_remuneration", "Total Taxes Collected": "total_taxes"})
+        .dropna()
+    )
+    return {
+        "mayor_df":                  mayor_df,
+        "councillor_avg_df":         councillor_avg_df,
+        "councillor_to_mayor_df":    councillor_to_mayor_df,
+        "mayor_expenses_df":         mayor_expenses_df,
+        "councillor_avg_expenses_df":councillor_avg_expenses_df,
+        "mayor_benefits_df":         mayor_benefits_df,
+        "councillor_avg_benefits_df":councillor_avg_benefits_df,
+        "scatter_df":                scatter_df,
+        "scatter_ptax_df":           scatter_ptax_df,
+        "scatter_taxes_df":          scatter_taxes_df,
+    }
+
+
+_derived = {yr: _derive(*data) for yr, data in ALL_DATA.items()}
+
+# Pre-compute mayor YoY % change 2023 -> 2024
+_mayors_2023 = _derived[2023]["mayor_df"][["municipality", "remuneration"]].rename(columns={"remuneration": "rem_2023"})
+_mayors_2024 = _derived[2024]["mayor_df"][["municipality", "remuneration"]].rename(columns={"remuneration": "rem_2024"})
+_yoy_df = (
+    _mayors_2023.merge(_mayors_2024, on="municipality", how="inner")
+    .assign(pct_change=lambda d: (d["rem_2024"] - d["rem_2023"]) / d["rem_2023"] * 100)
+    .dropna(subset=["pct_change"])
+)
+
+# Pre-compute average councillor YoY % change 2023 -> 2024
+_council_2023 = _derived[2023]["councillor_avg_df"][["municipality", "remuneration"]].rename(columns={"remuneration": "rem_2023"})
+_council_2024 = _derived[2024]["councillor_avg_df"][["municipality", "remuneration"]].rename(columns={"remuneration": "rem_2024"})
+_councillor_yoy_df = (
+    _council_2023.merge(_council_2024, on="municipality", how="inner")
+    .assign(pct_change=lambda d: (d["rem_2024"] - d["rem_2023"]) / d["rem_2023"] * 100)
+    .dropna(subset=["pct_change"])
+)
 
 
 # ---------------------------------------------------------------------------
@@ -256,7 +264,7 @@ def _build_fig(data, col, munis, x_title, tick_fmt, tick_suffix, label_fn):
     return fig
 
 
-def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix=""):
+def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix="", year=2024):
     colors     = px.colors.qualitative.D3
     selected   = data[data["municipality"].isin(munis)]
     unselected = data[~data["municipality"].isin(munis)]
@@ -289,8 +297,7 @@ def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix=""):
             y=[y_val],
             mode="markers+text",
             marker=dict(color=color, size=11, line=dict(color="white", width=1)),
-            text=[muni],
-            textposition="top center",
+            text=[muni], textposition="top center",
             textfont=dict(color=color, size=11),
             hovertemplate=f"{muni}<br>{x_title}: {x_str}<br>Mayor: ${y_val:,.0f}<extra></extra>",
             showlegend=False,
@@ -298,7 +305,7 @@ def _build_scatter(data, x_col, munis, x_title, x_fmt, x_suffix=""):
 
     fig.update_layout(
         xaxis_title=x_title,
-        yaxis_title=f"Mayor Remuneration ({YEAR})",
+        yaxis_title=f"Mayor Remuneration ({year})",
         margin=dict(l=10, r=10, t=10, b=10),
     )
     fig.update_xaxes(tickformat=x_fmt, ticksuffix=x_suffix)
@@ -413,42 +420,50 @@ with ui.navset_tab():
                     selected="mayor",
                 )
 
+                ui.input_select(
+                    "dist_year",
+                    None,
+                    choices={"2024": "2024", "2023": "2023"},
+                    selected="2024",
+                )
+
                 @render.ui
                 def card_header_content():
                     view  = input.view()
                     munis = input.municipalities()
+                    year  = int(input.dist_year())
+                    d     = _derived[year]
 
                     if view == "mayor":
-                        sel_vals = mayor_df[mayor_df["municipality"].isin(munis)]["remuneration"].dropna()
-                        title    = f"Distribution of Mayor Remuneration ({YEAR})"
+                        sel_vals = d["mayor_df"][d["mayor_df"]["municipality"].isin(munis)]["remuneration"].dropna()
+                        title    = f"Distribution of Mayor Remuneration ({year})"
                         def fmt_val(v): return f"${v:,.0f}"
                     elif view == "council":
-                        sel_vals = councillor_avg_df[councillor_avg_df["municipality"].isin(munis)]["remuneration"].dropna()
-                        title    = f"Distribution of Average Councillor Remuneration by Municipality ({YEAR})"
+                        sel_vals = d["councillor_avg_df"][d["councillor_avg_df"]["municipality"].isin(munis)]["remuneration"].dropna()
+                        title    = f"Distribution of Average Councillor Remuneration by Municipality ({year})"
                         def fmt_val(v): return f"${v:,.0f}"
                     elif view == "ratio":
-                        sel_vals = councillor_to_mayor_df[councillor_to_mayor_df["municipality"].isin(munis)]["ratio"].dropna()
-                        title    = f"Average Councillor Remuneration as % of Mayor Remuneration ({YEAR})"
+                        sel_vals = d["councillor_to_mayor_df"][d["councillor_to_mayor_df"]["municipality"].isin(munis)]["ratio"].dropna()
+                        title    = f"Average Councillor Remuneration as % of Mayor Remuneration ({year})"
                         def fmt_val(v): return f"{v:.1f}%"
                     elif view == "mayor_exp":
-                        sel_vals = mayor_expenses_df[mayor_expenses_df["municipality"].isin(munis)]["expenses"].dropna()
-                        title    = f"Distribution of Mayor Expenses ({YEAR})"
+                        sel_vals = d["mayor_expenses_df"][d["mayor_expenses_df"]["municipality"].isin(munis)]["expenses"].dropna()
+                        title    = f"Distribution of Mayor Expenses ({year})"
                         def fmt_val(v): return f"${v:,.0f}"
                     elif view == "council_exp":
-                        sel_vals = councillor_avg_expenses_df[councillor_avg_expenses_df["municipality"].isin(munis)]["expenses"].dropna()
-                        title    = f"Distribution of Average Councillor Expenses by Municipality ({YEAR})"
+                        sel_vals = d["councillor_avg_expenses_df"][d["councillor_avg_expenses_df"]["municipality"].isin(munis)]["expenses"].dropna()
+                        title    = f"Distribution of Average Councillor Expenses by Municipality ({year})"
                         def fmt_val(v): return f"${v:,.0f}"
                     elif view == "mayor_ben":
-                        sel_vals = mayor_benefits_df[mayor_benefits_df["municipality"].isin(munis)]["benefits"].dropna()
-                        title    = f"Distribution of Mayor Benefits ({YEAR})"
+                        sel_vals = d["mayor_benefits_df"][d["mayor_benefits_df"]["municipality"].isin(munis)]["benefits"].dropna()
+                        title    = f"Distribution of Mayor Benefits ({year})"
                         def fmt_val(v): return f"${v:,.0f}"
                     else:
-                        sel_vals = councillor_avg_benefits_df[councillor_avg_benefits_df["municipality"].isin(munis)]["benefits"].dropna()
-                        title    = f"Distribution of Average Councillor Benefits by Municipality ({YEAR})"
+                        sel_vals = d["councillor_avg_benefits_df"][d["councillor_avg_benefits_df"]["municipality"].isin(munis)]["benefits"].dropna()
+                        title    = f"Distribution of Average Councillor Benefits by Municipality ({year})"
                         def fmt_val(v): return f"${v:,.0f}"
 
                     sel_avg = sel_vals.mean() if not sel_vals.empty else float("nan")
-
                     def badge_val(v):
                         return fmt_val(v) if not pd.isna(v) else "N/A"
 
@@ -479,63 +494,30 @@ with ui.navset_tab():
             def main_chart():
                 view  = req(input.view())
                 munis = req(input.municipalities())
+                year  = int(input.dist_year())
+                d     = _derived[year]
 
                 if view == "mayor":
-                    data = mayor_df[["municipality", "remuneration"]].dropna()
-                    return _build_fig(
-                        data, "remuneration", munis,
-                        x_title=f"Mayor Remuneration ({YEAR})",
-                        tick_fmt="$,.0f", tick_suffix="",
-                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-                    )
+                    data = d["mayor_df"][["municipality", "remuneration"]].dropna()
+                    return _build_fig(data, "remuneration", munis, x_title=f"Mayor Remuneration ({year})", tick_fmt="$,.0f", tick_suffix="", label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct")
                 elif view == "council":
-                    data = councillor_avg_df.dropna(subset=["remuneration"])
-                    return _build_fig(
-                        data, "remuneration", munis,
-                        x_title=f"Average Councillor Remuneration ({YEAR})",
-                        tick_fmt="$,.0f", tick_suffix="",
-                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-                    )
+                    data = d["councillor_avg_df"].dropna(subset=["remuneration"])
+                    return _build_fig(data, "remuneration", munis, x_title=f"Average Councillor Remuneration ({year})", tick_fmt="$,.0f", tick_suffix="", label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct")
                 elif view == "ratio":
-                    data = councillor_to_mayor_df.dropna(subset=["ratio"])
-                    return _build_fig(
-                        data, "ratio", munis,
-                        x_title=f"Avg Councillor Remuneration as % of Mayor ({YEAR})",
-                        tick_fmt=".1f", tick_suffix="%",
-                        label_fn=lambda v, p: f"{v:.1f}%, {p:.0f}th pct",
-                    )
+                    data = d["councillor_to_mayor_df"].dropna(subset=["ratio"])
+                    return _build_fig(data, "ratio", munis, x_title=f"Avg Councillor Remuneration as % of Mayor ({year})", tick_fmt=".1f", tick_suffix="%", label_fn=lambda v, p: f"{v:.1f}%, {p:.0f}th pct")
                 elif view == "mayor_exp":
-                    data = mayor_expenses_df.dropna(subset=["expenses"])
-                    return _build_fig(
-                        data, "expenses", munis,
-                        x_title=f"Mayor Expenses ({YEAR})",
-                        tick_fmt="$,.0f", tick_suffix="",
-                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-                    )
+                    data = d["mayor_expenses_df"].dropna(subset=["expenses"])
+                    return _build_fig(data, "expenses", munis, x_title=f"Mayor Expenses ({year})", tick_fmt="$,.0f", tick_suffix="", label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct")
                 elif view == "council_exp":
-                    data = councillor_avg_expenses_df.dropna(subset=["expenses"])
-                    return _build_fig(
-                        data, "expenses", munis,
-                        x_title=f"Average Councillor Expenses ({YEAR})",
-                        tick_fmt="$,.0f", tick_suffix="",
-                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-                    )
+                    data = d["councillor_avg_expenses_df"].dropna(subset=["expenses"])
+                    return _build_fig(data, "expenses", munis, x_title=f"Average Councillor Expenses ({year})", tick_fmt="$,.0f", tick_suffix="", label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct")
                 elif view == "mayor_ben":
-                    data = mayor_benefits_df.dropna(subset=["benefits"])
-                    return _build_fig(
-                        data, "benefits", munis,
-                        x_title=f"Mayor Benefits ({YEAR})",
-                        tick_fmt="$,.0f", tick_suffix="",
-                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-                    )
+                    data = d["mayor_benefits_df"].dropna(subset=["benefits"])
+                    return _build_fig(data, "benefits", munis, x_title=f"Mayor Benefits ({year})", tick_fmt="$,.0f", tick_suffix="", label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct")
                 else:
-                    data = councillor_avg_benefits_df.dropna(subset=["benefits"])
-                    return _build_fig(
-                        data, "benefits", munis,
-                        x_title=f"Average Councillor Benefits ({YEAR})",
-                        tick_fmt="$,.0f", tick_suffix="",
-                        label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct",
-                    )
+                    data = d["councillor_avg_benefits_df"].dropna(subset=["benefits"])
+                    return _build_fig(data, "benefits", munis, x_title=f"Average Councillor Benefits ({year})", tick_fmt="$,.0f", tick_suffix="", label_fn=lambda v, p: f"${v:,.0f}, {p:.0f}th pct")
 
     # ── Trends tab ──────────────────────────────────────────────────────────
     with ui.nav_panel("Trends"):
@@ -549,9 +531,16 @@ with ui.navset_tab():
                     selected="pop",
                 )
 
+                ui.input_select(
+                    "trends_year",
+                    None,
+                    choices={"2024": "2024", "2023": "2023"},
+                    selected="2024",
+                )
+
                 @render.ui
                 def trends_header_content():
-                    return ui.span(f"({YEAR})")
+                    return ui.span(f"({input.trends_year()})")
 
             @render.ui
             def trends_footer_content():
@@ -563,22 +552,65 @@ with ui.navset_tab():
             def trends_chart():
                 munis = req(input.municipalities())
                 tview = req(input.trends_view())
+                year  = int(input.trends_year())
+                d     = _derived[year]
 
                 if tview == "pop":
-                    return _build_scatter(
-                        scatter_df, "Population", munis,
-                        x_title=f"Population ({YEAR})",
-                        x_fmt=",",
-                    )
+                    return _build_scatter(d["scatter_df"], "Population", munis,
+                                          x_title=f"Population ({year})", x_fmt=",", year=year)
                 elif tview == "ptax":
-                    return _build_scatter(
-                        scatter_ptax_df, "ptax", munis,
-                        x_title=f"Property Tax on Typical House ({YEAR})",
-                        x_fmt="$,.0f",
-                    )
+                    return _build_scatter(d["scatter_ptax_df"], "ptax", munis,
+                                          x_title=f"Property Tax on Typical House ({year})", x_fmt="$,.0f", year=year)
                 else:
-                    return _build_scatter(
-                        scatter_taxes_df, "total_taxes", munis,
-                        x_title=f"Total Taxes Collected ({YEAR})",
-                        x_fmt="$,.0f",
+                    return _build_scatter(d["scatter_taxes_df"], "total_taxes", munis,
+                                          x_title=f"Total Taxes Collected ({year})", x_fmt="$,.0f", year=year)
+
+    # ── Year Over Year tab ──────────────────────────────────────────────────────────
+    with ui.nav_panel("Year Over Year"):
+        with ui.card(full_screen=True, style="height:calc(100vh - 200px)"):
+
+            with ui.card_header(class_="d-flex align-items-center gap-2 flex-wrap"):
+
+                ui.input_select(
+                    "yoy_view",
+                    None,
+                    choices={"mayor": "Mayor Remuneration", "council": "Avg Councillor Remuneration"},
+                    selected="mayor",
+                )
+
+                @render.ui
+                def yoy_header_content():
+                    munis    = input.municipalities()
+                    rview    = input.yoy_view()
+                    data     = _yoy_df if rview == "mayor" else _councillor_yoy_df
+                    sel_vals = data[data["municipality"].isin(munis)]["pct_change"].dropna()
+                    sel_avg  = sel_vals.mean() if not sel_vals.empty else float("nan")
+                    badge    = f"{sel_avg:.1f}%" if not pd.isna(sel_avg) else "N/A"
+                    label    = "Mayor" if rview == "mayor" else "Avg Councillor"
+                    return ui.TagList(
+                        ui.span(f"{label} Remuneration % Change 2023 → 2024"),
+                        ui.span(" | "),
+                        ui.tags.span(
+                            ui.tags.small("Avg of Selected: ", style="opacity:.7;"),
+                            ui.tags.strong(badge),
+                            class_="badge text-bg-primary fw-normal fs-6 px-2 py-1",
+                        ),
                     )
+
+            ui.card_footer("Each point is a municipality. Positive values indicate an increase from 2023 to 2024.")
+
+            @render_plotly
+            def yoy_chart():
+                munis = req(input.municipalities())
+                rview = req(input.yoy_view())
+                data  = _yoy_df if rview == "mayor" else _councillor_yoy_df
+                label = "Mayor" if rview == "mayor" else "Avg Councillor"
+                return _build_fig(
+                    data,
+                    "pct_change",
+                    munis,
+                    x_title=f"{label} Remuneration % Change (2023 → 2024)",
+                    tick_fmt=".1f",
+                    tick_suffix="%",
+                    label_fn=lambda v, p: f"{v:.1f}%, {p:.0f}th pct",
+                )
